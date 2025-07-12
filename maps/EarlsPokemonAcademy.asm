@@ -483,9 +483,9 @@ AcademyStickerMachineText:
 
 YoungsterIntroText:
 	text "Hey, I got this"
-	line "weak #MON, and I"
+	line "weak #MON."
 
-	para "really do not want"
+	para "I really don't want"
 	line "to keep it."
 	done
 
@@ -517,13 +517,14 @@ PartyFullGiftText:
 
 FairText:
 	text "That is fair."
-	line "I cannot blame you."
+	line "I don't blame you."
 
 	para "Maybe someone else"
 	line "will want it."
 
 	para "It is not strong,"
-	line "but it deserves a chance."
+	line "but it deserves"
+	cont "a chance."
 	done
 
 ReceivedGiftText:
