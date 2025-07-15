@@ -1364,12 +1364,25 @@ DestinyBond:
 	destinybond
 	endmove
 
-Spite:
+Hex:
 	checkobedience
 	usedmovetext
 	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	hex
 	checkhit
-	spite
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	buildopponentrage
+	kingsrock
 	endmove
 
 FalseSwipe:
