@@ -780,7 +780,6 @@ GrowlitheEvosAttacks:
 	db 1, ROAR
 	db 9, EMBER
 	db 18, LEER
-	db 26, TAKE_DOWN
 	db 34, FLAME_WHEEL
 	db 35, PLAY_ROUGH
 	db 42, AGILITY
@@ -791,7 +790,6 @@ ArcanineEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ROAR
 	db 1, LEER
-	db 1, TAKE_DOWN
 	db 1, FLAME_WHEEL
 	db 50, EXTREMESPEED
 	db 0 ; no more level-up moves
@@ -1043,7 +1041,7 @@ PonytaEvosAttacks:
 	db 13, EMBER
 	db 19, STOMP
 	db 26, FIRE_SPIN
-	db 34, TAKE_DOWN
+	db 34, BODY_SLAM
 	db 43, AGILITY
 	db 53, FIRE_BLAST
 	db 0 ; no more level-up moves
@@ -1059,7 +1057,7 @@ RapidashEvosAttacks:
 	db 13, EMBER
 	db 19, STOMP
 	db 26, FIRE_SPIN
-	db 34, TAKE_DOWN
+	db 34, BODY_SLAM
 	db 40, FURY_ATTACK
 	db 47, AGILITY
 	db 61, FIRE_BLAST
@@ -1172,7 +1170,7 @@ SeelEvosAttacks:
 	db 5, GROWL
 	db 16, AURORA_BEAM
 	db 21, REST
-	db 32, TAKE_DOWN
+	db 32, BODY_SLAM
 	db 37, ICE_BEAM
 	db 48, SAFEGUARD
 	db 0 ; no more level-up moves
@@ -1185,7 +1183,7 @@ DewgongEvosAttacks:
 	db 5, GROWL
 	db 16, AURORA_BEAM
 	db 21, REST
-	db 32, TAKE_DOWN
+	db 32, BODY_SLAM
 	db 43, ICE_BEAM
 	db 60, SAFEGUARD
 	db 0 ; no more level-up moves
@@ -1523,7 +1521,7 @@ RhyhornEvosAttacks:
 	db 19, FURY_ATTACK
 	db 31, SCARY_FACE
 	db 37, HORN_DRILL
-	db 49, TAKE_DOWN
+	db 49, BODY_SLAM
 	db 55, EARTHQUAKE
 	db 0 ; no more level-up moves
 
@@ -1537,7 +1535,7 @@ RhydonEvosAttacks:
 	db 19, FURY_ATTACK
 	db 31, SCARY_FACE
 	db 37, HORN_DRILL
-	db 54, TAKE_DOWN
+	db 54, BODY_SLAM
 	db 65, EARTHQUAKE
 	db 0 ; no more level-up moves
 
@@ -1760,7 +1758,7 @@ TaurosEvosAttacks:
 	db 26, PURSUIT
 	db 34, REST
 	db 43, THRASH
-	db 53, TAKE_DOWN
+	db 53, GIGA_IMPACT
 	db 0 ; no more level-up moves
 
 MagikarpEvosAttacks:
@@ -1817,7 +1815,6 @@ EeveeEvosAttacks:
 	db 23, QUICK_ATTACK
 	db 30, BITE
 	db 36, BATON_PASS
-	db 42, TAKE_DOWN
 	db 0 ; no more level-up moves
 
 VaporeonEvosAttacks:
@@ -1939,7 +1936,7 @@ AerodactylEvosAttacks:
 	db 22, SUPERSONIC
 	db 29, ANCIENTPOWER
 	db 36, SCARY_FACE
-	db 43, TAKE_DOWN
+	db 43, GIGA_IMPACT
 	db 50, HYPER_BEAM
 	db 0 ; no more level-up moves
 
@@ -2234,7 +2231,7 @@ HoothootEvosAttacks:
 	db 11, PECK
 	db 16, HYPNOSIS
 	db 22, REFLECT
-	db 28, TAKE_DOWN
+	db 28, PSYCHIC_M
 	db 33, MOONBLAST
 	db 34, CONFUSION
 	db 48, DREAM_EATER
@@ -2250,7 +2247,7 @@ NoctowlEvosAttacks:
 	db 11, PECK
 	db 16, HYPNOSIS
 	db 25, REFLECT
-	db 33, TAKE_DOWN
+	db 33, PSYCHIC_M
 	db 41, CONFUSION
 	db 43, MOONBLAST
 	db 57, DREAM_EATER
@@ -2340,7 +2337,6 @@ ChinchouEvosAttacks:
 	db 17, WATER_GUN
 	db 25, SPARK
 	db 29, CONFUSE_RAY
-	db 37, TAKE_DOWN
 	db 41, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
@@ -2354,7 +2350,6 @@ LanturnEvosAttacks:
 	db 17, WATER_GUN
 	db 25, SPARK
 	db 33, CONFUSE_RAY
-	db 45, TAKE_DOWN
 	db 53, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
@@ -2757,7 +2752,6 @@ PinecoEvosAttacks:
 	db 1, TACKLE
 	db 1, PROTECT
 	db 8, SELFDESTRUCT
-	db 15, TAKE_DOWN
 	db 22, RAPID_SPIN
 	db 29, BIDE
 	db 36, EXPLOSION
@@ -2771,7 +2765,6 @@ ForretressEvosAttacks:
 	db 1, PROTECT
 	db 1, SELFDESTRUCT
 	db 8, SELFDESTRUCT
-	db 15, TAKE_DOWN
 	db 22, RAPID_SPIN
 	db 29, BIDE
 	db 39, EXPLOSION
@@ -2786,7 +2779,6 @@ DunsparceEvosAttacks:
 	db 13, GLARE
 	db 26, PURSUIT
 	db 30, SCREECH
-	db 38, TAKE_DOWN
 	db 0 ; no more level-up moves
 
 GligarEvosAttacks:
@@ -2850,7 +2842,6 @@ QwilfishEvosAttacks:
 	db 10, MINIMIZE
 	db 19, WATER_GUN
 	db 28, PIN_MISSILE
-	db 37, TAKE_DOWN
 	db 46, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
@@ -2887,7 +2878,6 @@ HeracrossEvosAttacks:
 	db 12, ENDURE
 	db 19, FURY_ATTACK
 	db 27, COUNTER
-	db 35, TAKE_DOWN
 	db 44, REVERSAL
 	db 54, MEGAHORN
 	db 0 ; no more level-up moves
@@ -2970,7 +2960,6 @@ SwinubEvosAttacks:
 	db 1, TACKLE
 	db 10, POWDER_SNOW
 	db 19, ENDURE
-	db 28, TAKE_DOWN
 	db 37, MIST
 	db 46, BLIZZARD
 	db 55, AMNESIA
@@ -2983,7 +2972,6 @@ PiloswineEvosAttacks:
 	db 1, ENDURE
 	db 10, POWDER_SNOW
 	db 19, ENDURE
-	db 28, TAKE_DOWN
 	db 33, FURY_ATTACK
 	db 42, MIST
 	db 56, BLIZZARD
@@ -3039,7 +3027,6 @@ MantineEvosAttacks:
 	db 1, BUBBLE
 	db 10, SUPERSONIC
 	db 18, BUBBLEBEAM
-	db 25, TAKE_DOWN
 	db 32, AGILITY
 	db 40, WING_ATTACK
 	db 49, CONFUSE_RAY
@@ -3104,7 +3091,6 @@ PhanpyEvosAttacks:
 	db 1, GROWL
 	db 9, DEFENSE_CURL
 	db 17, FLAIL
-	db 25, TAKE_DOWN
 	db 33, ROLLOUT
 	db 41, ENDURE
 	db 49, DOUBLE_EDGE
@@ -3143,7 +3129,6 @@ StantlerEvosAttacks:
 	db 15, HYPNOSIS
 	db 23, STOMP
 	db 31, SAND_ATTACK
-	db 40, TAKE_DOWN
 	db 49, CONFUSE_RAY
 	db 0 ; no more level-up moves
 
