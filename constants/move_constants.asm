@@ -259,6 +259,7 @@
 	const BEAT_UP      ; fb
 	const NASTY_PLOT   ; fc
 	const AIR_SLASH    ; fd
+	const FAIRY_WIND   ; fe
 DEF NUM_ATTACKS EQU const_value - 1
 
 ; Battle animations use the same constants as the moves up to this point
