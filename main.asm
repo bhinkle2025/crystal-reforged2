@@ -124,7 +124,6 @@ INCLUDE "engine/events/kurt_selectquantity_interpretjoypad.asm"
 SECTION "bankA", ROMX
 
 INCLUDE "engine/link/link.asm"
-INCLUDE "engine/overworld/wildmons.asm"
 INCLUDE "engine/battle/link_result.asm"
 
 
@@ -718,7 +717,6 @@ SECTION "Bank3E Overflow", ROMX
 INCLUDE "engine/link/time_capsule.asm"
 INCLUDE "engine/link/time_capsule_2.asm"
 INCLUDE "engine/events/magikarp.asm"
-
 
 
 SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
