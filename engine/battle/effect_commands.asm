@@ -1404,7 +1404,7 @@ BattleCheckTypeMatchup:
 	ld hl, wBattleMonType1
 .get_type
 	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar ; preserves hl, de, and bc	
+	call GetBattleVar ; preserves hl, de, and bc
 	; fallthrough
 CheckTypeMatchup:
 	push hl
