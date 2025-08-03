@@ -1555,9 +1555,6 @@ BattleCommand_CheckHit:
 	call .DrainSub
 	jp z, .Miss
 
-	call .LockOn
-	ret nz
-
 	call .FlyDigMoves
 	jp nz, .Miss
 
@@ -1654,35 +1651,6 @@ BattleCommand_CheckHit:
 	ld c, 40
 	call DelayFrames
 
-	ld a, 1
-	and a
-	ret
-
-.LockOn:
-; Return nz if we are locked-on and aren't trying to use Earthquake,
-; Fissure or Magnitude on a monster that is flying.
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
-	call GetBattleVarAddr
-	bit SUBSTATUS_LOCK_ON, [hl]
-	res SUBSTATUS_LOCK_ON, [hl]
-	ret z
-
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_FLYING, a
-	jr z, .LockedOn
-
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-
-	cp EARTHQUAKE
-	ret z
-	cp FISSURE
-	ret z
-	cp MAGNITUDE
-	ret z
-
-.LockedOn:
 	ld a, 1
 	and a
 	ret
@@ -3392,8 +3360,6 @@ INCLUDE "engine/battle/move_effects/pain_split.asm"
 INCLUDE "engine/battle/move_effects/snore.asm"
 
 INCLUDE "engine/battle/move_effects/conversion2.asm"
-
-INCLUDE "engine/battle/move_effects/lock_on.asm"
 
 INCLUDE "engine/battle/move_effects/sketch.asm"
 
@@ -6480,6 +6446,10 @@ INCLUDE "engine/battle/move_effects/psych_up.asm"
 INCLUDE "engine/battle/move_effects/mirror_coat.asm"
 
 INCLUDE "engine/battle/move_effects/growth.asm"
+
+INCLUDE "engine/battle/move_effects/calm_mind.asm"
+
+INCLUDE "engine/battle/move_effects/dragon_dance.asm"
 
 BattleCommand_DoubleMinimizeDamage:
 	ld hl, wEnemyMinimized

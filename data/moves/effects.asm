@@ -890,6 +890,15 @@ PoisonMultiHit:
 	raisesub
 	kingsrock
 	poisontarget
+
+DragonDance:
+	checkobedience
+	usedmovetext
+	doturn
+	lowersub
+	statupanim
+	raisesub
+	dragondance
 	endmove
 
 FlinchHit:
@@ -1338,12 +1347,14 @@ Conversion2:
 	conversion2
 	endmove
 
-LockOn:
+CalmMind:
 	checkobedience
 	usedmovetext
 	doturn
-	checkhit
-	lockon
+	lowersub
+	statupanim
+	raisesub
+	calmmind
 	endmove
 
 Sketch:
