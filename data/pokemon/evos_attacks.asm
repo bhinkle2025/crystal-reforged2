@@ -2584,6 +2584,7 @@ HoppipEvosAttacks:
 	db 12, GUST
 	db 19, LEECH_SEED
 	db 22, MEGA_DRAIN
+	db 24, ACROBATICS
 	db 25, COTTON_SPORE
 	db 32, GIGA_DRAIN
 	db 0 ; no more level-up moves
@@ -2603,6 +2604,7 @@ SkiploomEvosAttacks:
 	db 12, GUST
 	db 19, LEECH_SEED
 	db 22, MEGA_DRAIN
+	db 24, ACROBATICS
 	db 25, COTTON_SPORE
 	db 32, GIGA_DRAIN
 	db 0 ; no more level-up moves
@@ -2611,6 +2613,7 @@ JumpluffEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SPLASH
 	db 1, TACKLE
+	db 5, SYNTHESIS
 	db 5, TAIL_WHIP
 	db 6, ABSORB
 	db 8, FAIRY_WIND
@@ -2618,9 +2621,9 @@ JumpluffEvosAttacks:
 	db 10, STUN_SPORE
 	db 10, SLEEP_POWDER
 	db 12, GUST
-	db 15, SYNTHESIS
 	db 19, LEECH_SEED
 	db 22, MEGA_DRAIN
+	db 24, ACROBATICS
 	db 25, COTTON_SPORE
 	db 32, GIGA_DRAIN
 	db 0 ; no more level-up moves
@@ -2637,6 +2640,7 @@ AipomEvosAttacks:
 	db 25, SCREECH
 	db 29, AGILITY
 	db 32, THIEF
+	db 36, ACROBATICS
 	db 39, NASTY_PLOT
 	db 0 ; no more level-up moves
 
@@ -2874,6 +2878,7 @@ GligarEvosAttacks:
 	db 13, QUICK_ATTACK
 	db 16, MUD_SLAP
 	db 19, MAGNITUDE
+	db 22, ACROBATICS
 	db 27, SLASH
 	db 28, DIG
 	db 35, SCREECH

@@ -958,6 +958,27 @@ RecoilHit:
 	kingsrock
 	endmove
 
+Acrobatics:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	acrobatics
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	buildopponentrage
+	endmove
+
 Mist:
 	checkobedience
 	usedmovetext
