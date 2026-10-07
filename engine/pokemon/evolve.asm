@@ -116,7 +116,7 @@ EvolveAfterBattle_MasterLoop:
 	jp nz, .dont_evolve_2
 
 	inc hl
-	jr .proceed
+	jp .proceed
 
 .happiness
 	ld a, [wTempMonHappiness]
@@ -183,6 +183,21 @@ EvolveAfterBattle_MasterLoop:
 	and a
 	jp nz, .dont_evolve_3
 	jr .proceed
+
+.held
+	push hl
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld a, [hl]
+	ld b, a
+	pop hl
+	ld a, [hli]
+	cp b
+	jp nz, .dont_evolve_2
+	jp .proceed
+
 
 .level
 	ld a, [hli]
@@ -327,23 +342,8 @@ EvolveAfterBattle_MasterLoop:
 .dont_evolve_2
 	inc hl
 .dont_evolve_3
-	jp .proceed
-
-.held
-	push hl
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	ld a, [hl]
-	ld b, a
-	pop hl
-	ld a, [hli]
-	cp b
-	jp nz, .dont_evolve_2
-	jp .proceed
-
-
+	inc hl
+	jp .loop
 
 .UnusedReturnToMap: ; unreferenced
 	pop hl
