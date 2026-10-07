@@ -1840,93 +1840,84 @@ endr
 	ret
 
 AI_Smart_Curse:
-	ld a, [wEnemyMonType1]
-	cp GHOST
-	jr z, .ghost_curse
-	ld a, [wEnemyMonType2]
-	cp GHOST
-	jr z, .ghost_curse
+        ld a, [wEnemyMonType1]
+        cp GHOST
+        jr z, .ghost_curse
+        ld a, [wEnemyMonType2]
+        cp GHOST
+        jr z, .ghost_curse
 
-	call AICheckEnemyHalfHP
-	jr nc, .encourage
+        call AICheckEnemyHalfHP
+        jr nc, .discourage
 
-	ld a, [wEnemyAtkLevel]
-	cp BASE_STAT_LEVEL + 4
-	jr nc, .encourage
-	cp BASE_STAT_LEVEL + 2
-	ret nc
+        ld a, [wEnemyAtkLevel]
+        cp BASE_STAT_LEVEL + 4
+        jr nc, .discourage
+        cp BASE_STAT_LEVEL + 2
+        ret nc
 
-	ld a, [wBattleMonType1]
-	cp GHOST
-<<<<<<< HEAD
-	jr z, .greatly_encourage
-	cp SPECIAL
-	ret nc
-	ld a, [wBattleMonType2]
-	cp SPECIAL
-	ret nc
-=======
-	jr z, .greatly_discourage
->>>>>>> 80460509c (Physical/Special split)
-	call AI_80_20
-	ret c
-	dec [hl]
-	dec [hl]
-	ret
+        ld a, [wBattleMonType1]
+        cp GHOST
+        jr z, .greatly_discourage
+        call AI_80_20
+        ret c
+        dec [hl]
+        dec [hl]
+        ret
 
-.approve
-	inc [hl]
-	inc [hl]
-.greatly_encourage
-	inc [hl]
-.encourage
-	inc [hl]
-	ret
+.highly_discourage
+        inc [hl]
+        inc [hl]
+.greatly_discourage
+        inc [hl]
+.discourage
+        inc [hl]
+        ret
 
 .ghost_curse
-	ld a, [wPlayerSubStatus1]
-	bit SUBSTATUS_CURSE, a
-	jp nz, AIDiscourageMove
+        ld a, [wPlayerSubStatus1]
+        bit SUBSTATUS_CURSE, a
+        jp nz, AIDiscourageMove
 
-	push hl
-	farcall FindAliveEnemyMons
-	pop hl
-	jr nc, .notlastmon
+        push hl
+        farcall FindAliveEnemyMons
+        pop hl
+        jr nc, .notlastmon
 
-	push hl
-	call AICheckLastPlayerMon
-	pop hl
-	jr nz, .approve
+        push hl
+        call AICheckLastPlayerMon
+        pop hl
+        jr nz, .highly_discourage
 
-	jr .ghost_continue
+        jr .ghost_continue
 
 .notlastmon
-	push hl
-	call AICheckLastPlayerMon
-	pop hl
-	jr z, .maybe_greatly_encourage
+        push hl
+        call AICheckLastPlayerMon
+        pop hl
+        jr z, .maybe_greatly_encourage
 
 .ghost_continue
-	call AICheckEnemyQuarterHP
-	jp nc, .approve
+        call AICheckEnemyQuarterHP
+        jp nc, .highly_discourage
 
-	call AICheckEnemyHalfHP
-	jr nc, .greatly_encourage
+        call AICheckEnemyHalfHP
+        jr nc, .greatly_discourage
 
-	call AICheckEnemyMaxHP
-	ret nc
+        call AICheckEnemyMaxHP
+        ret nc
 
-	ld a, [wPlayerTurnsTaken]
-	and a
-	ret nz
+        ld a, [wPlayerTurnsTaken]
+        and a
+        ret nz
 
 .maybe_greatly_encourage
-	call AI_50_50
-	ret c
+        call AI_50_50
+        ret c
 
-	dec [hl]
-	dec [hl]
-	ret
+        dec [hl]
+        dec [hl]
+        ret
 
 AI_Smart_Protect:
 ; Greatly discourage this move if the enemy already used Protect.
