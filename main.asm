@@ -718,6 +718,10 @@ INCLUDE "engine/link/time_capsule.asm"
 INCLUDE "engine/link/time_capsule_2.asm"
 INCLUDE "engine/events/magikarp.asm"
 
+SECTION "Overworld Wildmon Data", ROMX
+
+INCLUDE "engine/overworld/wildmons.asm"
+
 
 SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
 
