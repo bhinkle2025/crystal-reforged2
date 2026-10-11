@@ -198,9 +198,9 @@ Text_ReceivedGlacierBadge:
 	done
 
 PryceText_GlacierBadgeSpeech:
-	text "That BADGE will"
-	line "raise the SPECIAL"
-	cont "stats of #MON."
+	text "The GLACIERBADGE"
+	line "is proof of your"
+	cont "perseverance."
 
 	para "It also lets your"
 	line "#MON use WHIRL-"

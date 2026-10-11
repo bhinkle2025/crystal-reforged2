@@ -153,8 +153,8 @@ ReceivedZephyrBadgeText:
 
 FalknerZephyrBadgeText:
 	text "ZEPHYRBADGE"
-	line "raises the attack"
-	cont "power of #MON."
+	line "proves you won"
+	cont "here."
 
 	para "It also enables"
 	line "#MON to use"
