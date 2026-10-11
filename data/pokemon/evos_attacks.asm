@@ -1691,7 +1691,7 @@ JynxEvosAttacks:
 	db 25, ICE_PUNCH
 	db 30, BODY_SLAM
 	db 33, MEAN_LOOK
-	db 37, PSYCHIC
+	db 37, PSYCHIC_M
 	db 40, PERISH_SONG
 	db 45, BLIZZARD
 	db 0 ; no more level-up moves

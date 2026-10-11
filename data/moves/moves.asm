@@ -28,7 +28,7 @@ Moves:
 	move PLAY_ROUGH,   EFFECT_ATTACK_DOWN_HIT,    90, FAIRY,        PHYSICAL,  90, 10,  10
 	move DAZZLE,       EFFECT_NORMAL_HIT,         80, FAIRY,        SPECIAL,  100, 10,   0
 	move SWORDS_DANCE, EFFECT_ATTACK_UP_2,         0, NORMAL,       STATUS,   100, 30,   0
-	move CUT,          EFFECT_NORMAL_HIT,         50, NORMAL,       PHYSICAL,  95, 30,   0
+	move CUT,          EFFECT_NORMAL_HIT,         80, BUG,          PHYSICAL, 100, 15,   0
 	move GUST,         EFFECT_GUST,               40, FLYING,       SPECIAL,  100, 35,   0
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,       PHYSICAL, 100, 35,   0
 	move WHIRLWIND,    EFFECT_FORCE_SWITCH,        0, NORMAL,       STATUS,   100, 20,   0
@@ -112,7 +112,7 @@ Moves:
 	move MEDITATE,     EFFECT_ATTACK_UP,           0, PSYCHIC_TYPE, STATUS,   100, 40,   0
 	move AGILITY,      EFFECT_SPEED_UP_2,          0, PSYCHIC_TYPE, STATUS,   100, 30,   0
 	move QUICK_ATTACK, EFFECT_PRIORITY_HIT,       40, NORMAL,       PHYSICAL, 100, 30,   0
-	move RAGE,         EFFECT_RAGE,               60, NORMAL,       PHYSICAL, 100, 20,   0
+	move RAGE,         EFFECT_PURSUIT,            65, FIGHTING,     PHYSICAL, 100, 20,   0
 	move TELEPORT,     EFFECT_TELEPORT,            0, PSYCHIC_TYPE, STATUS,   100, 20,   0
 	move SHADOW_SNEAK, EFFECT_PRIORITY_HIT,       40, GHOST,        PHYSICAL, 100, 30,   0
 	move MIMIC,        EFFECT_MIMIC,               0, NORMAL,       STATUS,   100, 10,   0
@@ -241,7 +241,7 @@ Moves:
 	move DRAGONBREATH, EFFECT_PARALYZE_HIT,       80, DRAGON,       SPECIAL,  100, 20,  30
 	move BATON_PASS,   EFFECT_BATON_PASS,          0, NORMAL,       STATUS,   100, 40,   0
 	move ENCORE,       EFFECT_ENCORE,              0, NORMAL,       STATUS,   100,  5,   0
-	move PURSUIT,      EFFECT_PURSUIT,            40, DARK,         PHYSICAL, 100, 20,   0
+	move PURSUIT,      EFFECT_PURSUIT,            65, DARK,         PHYSICAL, 100, 20,   0
 	move RAPID_SPIN,   EFFECT_RAPID_SPIN,         50, NORMAL,       PHYSICAL, 100, 40, 100
 	move SWEET_SCENT,  EFFECT_EVASION_DOWN,        0, NORMAL,       STATUS,   100, 20,   0
 	move IRON_TAIL,    EFFECT_DEFENSE_DOWN_HIT,  100, STEEL,        PHYSICAL,  75, 15,  30
@@ -259,7 +259,7 @@ Moves:
 	move MIRROR_COAT,  EFFECT_MIRROR_COAT,         1, PSYCHIC_TYPE, STATUS,   100, 20,   0
 	move PSYCH_UP,     EFFECT_PSYCH_UP,            0, NORMAL,       STATUS,   100, 10,   0
 	move EXTREMESPEED, EFFECT_PRIORITY_HIT,       80, NORMAL,       PHYSICAL, 100,  5,   0
-	move ANCIENTPOWER, EFFECT_ALL_UP_HIT,         60, ROCK,         SPECIAL,  100,  5,  10
+	move ANCIENTPOWER, EFFECT_ALL_UP_HIT,         75, ROCK,         SPECIAL,  100,  5,  10
 	move SHADOW_BALL,  EFFECT_SP_DEF_DOWN_HIT,    80, GHOST,        SPECIAL,  100, 15,  20
 	move FUTURE_SIGHT, EFFECT_FUTURE_SIGHT,      120, PSYCHIC_TYPE, SPECIAL,  100, 10,   0
 	move ROCK_SMASH,   EFFECT_DEFENSE_DOWN_HIT,   75, FIGHTING,     PHYSICAL, 100, 15,  50
