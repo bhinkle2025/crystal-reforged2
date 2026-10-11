@@ -634,7 +634,6 @@ VenonatEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, FORESIGHT
-	db 5, TOXIC
 	db 9, SUPERSONIC
 	db 17, CONFUSION
 	db 20, POISONPOWDER
@@ -1687,12 +1686,14 @@ JynxEvosAttacks:
 	db 1, POWDER_SNOW
 	db 9, LOVELY_KISS
 	db 13, POWDER_SNOW
-	db 21, DOUBLESLAP
+	db 15, DOUBLESLAP
+	db 21, CONFUSION
 	db 25, ICE_PUNCH
-	db 35, MEAN_LOOK
-	db 41, BODY_SLAM
-	db 51, PERISH_SONG
-	db 57, BLIZZARD
+	db 30, BODY_SLAM
+	db 33, MEAN_LOOK
+	db 37, PSYCHIC
+	db 40, PERISH_SONG
+	db 45, BLIZZARD
 	db 0 ; no more level-up moves
 
 ElectabuzzEvosAttacks:
@@ -3355,8 +3356,8 @@ SmoochumEvosAttacks:
 	db 25, SING
 	db 33, MEAN_LOOK
 	db 37, PSYCHIC_M
-	db 45, PERISH_SONG
-	db 49, BLIZZARD
+	db 40, PERISH_SONG
+	db 45, BLIZZARD
 	db 0 ; no more level-up moves
 
 ElekidEvosAttacks:
@@ -3368,7 +3369,6 @@ ElekidEvosAttacks:
 	db 8, LOW_KICK
 	db 16, THUNDERPUNCH
 	db 19, THUNDER_WAVE
-	db 19, BEAT_UP
 	db 22, LIGHT_SCREEN
 	db 25, SWIFT
 	db 33, SCREECH
