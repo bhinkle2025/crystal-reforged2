@@ -24,7 +24,7 @@ WhirlIslandB1FNugget:
 	itemball NUGGET
 
 WhirlIslandB1FEscapeRope:
-	itemball ESCAPE_ROPE
+	itemball ULTRA_BALL
 
 WhirlIslandB1FBoulder:
 	jumpstd StrengthBoulderScript

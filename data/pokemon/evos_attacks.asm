@@ -2110,8 +2110,8 @@ CyndaquilEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, LEER
-	db 6, SMOKESCREEN
-	db 10, EMBER
+	db 6, EMBER
+	db 10, SMOKESCREEN
 	db 13, QUICK_ATTACK
 	db 19, FLAME_WHEEL
 	db 22, DEFENSE_CURL

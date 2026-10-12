@@ -363,7 +363,7 @@ _UseDigText::
 	done
 
 _UseEscapeRopeText::
-	text "<PLAYER> used an"
+	text "<PLAYER> used the"
 	line "ESCAPE ROPE."
 	done
 

@@ -879,10 +879,6 @@ CountStep:
 	farcall CheckSpecialPhoneCall
 	jr c, .doscript
 
-	; If Repel wore off, don't count the step.
-	call DoRepelStep
-	jr c, .doscript
-
 	ld hl, wStepCount
 	inc [hl]
 	; Every 256 steps, increase the happiness of all your Pokemon.
@@ -922,21 +918,6 @@ CountStep:
 
 .whiteout ; unreferenced
 	ld a, PLAYEREVENT_WHITEOUT
-	scf
-	ret
-
-DoRepelStep:
-	ld a, [wRepelEffect]
-	and a
-	ret z
-
-	dec a
-	ld [wRepelEffect], a
-	ret nz
-
-	ld a, BANK(RepelWoreOffScript)
-	ld hl, RepelWoreOffScript
-	call CallScript
 	scf
 	ret
 
