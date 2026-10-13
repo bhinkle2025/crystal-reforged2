@@ -890,6 +890,7 @@ PoisonMultiHit:
 	raisesub
 	kingsrock
 	poisontarget
+	endmove
 
 DragonDance:
 	checkobedience
