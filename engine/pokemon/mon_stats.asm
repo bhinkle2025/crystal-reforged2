@@ -84,6 +84,9 @@ DrawHP:
 
 PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
+	ld a, [wStatsScreenFlags]
+	bit STATS_DV_MODE_F, a
+	jp nz, PrintTempMonDVs
 	push bc
 	push hl
 	ld de, .StatNames
@@ -107,6 +110,65 @@ PrintTempMonStats:
 
 .PrintStat:
 	push hl
+	call PrintNum
+	pop hl
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	ret
+
+.StatNames:
+	db   "ATTACK"
+	next "DEFENSE"
+	next "SPCL.ATK"
+	next "SPCL.DEF"
+	next "SPEED"
+	next "@"
+
+PrintTempMonDVs:
+; Display the five stats using their DVs instead.
+
+	push bc
+	push hl
+	ld de, .StatNames
+	call PlaceString
+	pop hl
+	pop bc
+	add hl, bc
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+
+	; Attack DV
+	ld a, [wTempMonDVs]
+	swap a
+	and $f
+	call .PrintDV
+
+	; Defense DV
+	ld a, [wTempMonDVs]
+	and $f
+	call .PrintDV
+
+	; Special Attack DV
+	ld a, [wTempMonDVs + 1]
+	and $f
+	call .PrintDV
+
+	; Special Defense DV
+	ld a, [wTempMonDVs + 1]
+	and $f
+	call .PrintDV
+
+	; Speed DV
+	ld a, [wTempMonDVs + 1]
+	swap a
+	and $f
+	jp .PrintDV
+
+.PrintDV:
+	ld [wStringBuffer1 + 4], a
+	push hl
+	ld de, wStringBuffer1 + 4
+	lb bc, 1, 2
 	call PrintNum
 	pop hl
 	ld de, SCREEN_WIDTH * 2

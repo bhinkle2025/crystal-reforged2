@@ -5,6 +5,7 @@
 DEF NUM_STAT_PAGES EQU const_value - 1
 
 DEF STAT_PAGE_MASK EQU %00000011
+DEF STATS_DV_MODE_F EQU 3 ; SELECT toggles DVs
 
 BattleStatsScreenInit:
 	ld a, [wLinkMode]
@@ -249,7 +250,7 @@ MonStatsJoypad:
 	ret
 
 .next
-	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
+	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON | SELECT
 	jp StatsScreen_JoypadAction
 
 StatsScreenWaitCry:
@@ -320,6 +321,8 @@ StatsScreen_JoypadAction:
 	maskbits NUM_STAT_PAGES
 	ld c, a
 	pop af
+	bit SELECT_F, a
+	jr nz, .select
 	bit B_BUTTON_F, a
 	jp nz, .b_button
 	bit D_LEFT_F, a
@@ -333,6 +336,27 @@ StatsScreen_JoypadAction:
 	bit D_DOWN_F, a
 	jr nz, .d_down
 	jr .done
+
+.select
+	; Only toggle on the stats page.
+	ld a, c
+	cp BLUE_PAGE
+	jp nz, .done
+
+	ld hl, wStatsScreenFlags
+	bit STATS_DV_MODE_F, [hl]
+	jr z, .show_dvs
+
+	res STATS_DV_MODE_F, [hl]
+	jr .refresh_page
+
+.show_dvs
+	set STATS_DV_MODE_F, [hl]
+
+.refresh_page
+	ld h, 4
+	call StatsScreen_SetJumptableIndex
+	ret
 
 .d_down
 	ld a, [wMonType]
@@ -779,7 +803,55 @@ LoadBluePage:
 	hlcoord 11, 8
 	ld bc, 6
 	predef PrintTempMonStats
+
+	ld a, [wStatsScreenFlags]
+	bit STATS_DV_MODE_F, a
+	ret z
+
+	call .PlaceHPDV
 	ret
+
+.PlaceHPDV:
+	; HP DV derived from Attack, Defense, Speed, Special
+	ld a, [wTempMonDVs]
+	and $10
+	swap a
+	add a
+	add a
+	add a
+	ld b, a
+
+	ld a, [wTempMonDVs]
+	and $01
+	add a
+	add a
+	or b
+	ld b, a
+
+	ld a, [wTempMonDVs + 1]
+	and $10
+	swap a
+	add a
+	or b
+	ld b, a
+
+	ld a, [wTempMonDVs + 1]
+	and $01
+	or b
+	ld [wStringBuffer1 + 4], a
+
+	ld de, .HPDVLabel
+	hlcoord 1, 16
+	call PlaceString
+
+	ld de, wStringBuffer1 + 4
+	hlcoord 7, 16
+	lb bc, 1, 2
+	call PrintNum
+	ret
+
+.HPDVLabel:
+	db "HP DV@"
 
 .PlaceOTInfo:
 	ld de, IDNoString
