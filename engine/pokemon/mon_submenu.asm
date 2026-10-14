@@ -58,10 +58,10 @@ MonMenuLoop:
 	call InitVerticalMenuCursor
 
 	ld hl, w2DMenuFlags1
+	res 5, [hl] ; Disable cursor wraparound
 	set 6, [hl]
-	; Allow the menu to detect scrolling at its edges.
-	set 3, [hl] ; Down
-	set 2, [hl] ; Up
+	set 3, [hl] ; Detect bottom edge
+	set 2, [hl] ; Detect top edge
 
 	call StaticMenuJoypad
 
@@ -81,7 +81,7 @@ MonMenuLoop:
 	jp .loop
 
 .scroll
-	ldh a, [hJoyPressed]
+	call GetMenuJoypad
 	bit D_DOWN_F, a
 	jr nz, .scroll_down
 	bit D_UP_F, a
