@@ -34,8 +34,8 @@ EvolutionMoves::
 	db NO_MOVE      ; NIDORAN_M
 	db NO_MOVE      ; NIDORINO
 	db NO_MOVE      ; NIDOKING
-	db NO_MOVE      ; CLEFAIRY
-	db METRONOME    ; CLEFABLE
+	db METRONOME    ; CLEFAIRY
+	db MOONBLAST    ; CLEFABLE
 	db NO_MOVE      ; VULPIX
 	db NO_MOVE      ; NINETALES
 	db NO_MOVE      ; JIGGLYPUFF
