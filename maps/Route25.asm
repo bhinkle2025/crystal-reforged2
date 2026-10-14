@@ -186,7 +186,7 @@ BillsHouseSign:
 	jumptext BillsHouseSignText
 
 Route25Protein:
-	itemball PROTEIN
+	itemball GREAT_BALL
 
 Route25HiddenPotion:
 	hiddenitem POTION, EVENT_ROUTE_25_HIDDEN_POTION

@@ -13,7 +13,7 @@ SilverCaveRoom1MaxElixer:
 	itemball MAX_ELIXER
 
 SilverCaveRoom1Protein:
-	itemball PROTEIN
+	itemball MAX_REVIVE
 
 SilverCaveRoom1EscapeRope:
 	itemball ULTRA_BALL

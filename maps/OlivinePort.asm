@@ -232,7 +232,7 @@ OlivinePortCooltrainerFScript:
 	end
 
 OlivinePortHiddenProtein:
-	hiddenitem PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
+	hiddenitem ULTRA_BALL, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 
 OlivinePortEnterFastShipMovement:
 	step DOWN

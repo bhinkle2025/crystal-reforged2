@@ -83,7 +83,7 @@ Moves:
 	move LOW_KICK,     EFFECT_FLINCH_HIT,         50, FIGHTING,     PHYSICAL,  90, 20,  30
 	move COUNTER,      EFFECT_COUNTER,             1, FIGHTING,     PHYSICAL, 100, 20,   0
 	move SEISMIC_TOSS, EFFECT_LEVEL_DAMAGE,        1, FIGHTING,     PHYSICAL, 100, 20,   0
-	move STRENGTH,     EFFECT_NORMAL_HIT,         80, NORMAL,       PHYSICAL, 100, 15,   0
+	move STRENGTH,     EFFECT_ATTACK_UP_HIT,      80, ROCK,         PHYSICAL, 100, 15,  20
 	move ABSORB,       EFFECT_LEECH_HIT,          20, GRASS,        SPECIAL,  100, 20,   0
 	move MEGA_DRAIN,   EFFECT_LEECH_HIT,          40, GRASS,        SPECIAL,  100, 10,   0
 	move LEECH_SEED,   EFFECT_LEECH_SEED,          0, GRASS,        STATUS,    90, 10,   0
@@ -170,7 +170,7 @@ Moves:
 	move FURY_SWIPES,  EFFECT_MULTI_HIT,          18, NORMAL,       PHYSICAL,  80, 15,   0
 	move BONEMERANG,   EFFECT_DOUBLE_HIT,         50, GROUND,       PHYSICAL,  90, 10,   0
 	move REST,         EFFECT_HEAL,                0, PSYCHIC_TYPE, STATUS,   100, 10,   0
-	move ROCK_SLIDE,   EFFECT_FLINCH_HIT,         75, ROCK,         PHYSICAL,  90, 10,  30
+	move ROCK_SLIDE,   EFFECT_FLINCH_HIT,        110, ROCK,         PHYSICAL,  85,  5,  10
 	move HYPER_FANG,   EFFECT_FLINCH_HIT,         80, NORMAL,       PHYSICAL,  90, 15,  10
 	move SHARPEN,      EFFECT_ATTACK_UP,           0, NORMAL,       STATUS,   100, 30,   0
 	move CONVERSION,   EFFECT_CONVERSION,          0, NORMAL,       STATUS,   100, 30,   0
@@ -201,7 +201,7 @@ Moves:
 	move FAINT_ATTACK, EFFECT_ALWAYS_HIT,         75, DARK,         PHYSICAL, 100, 20,   0
 	move SWEET_KISS,   EFFECT_CONFUSE,             0, FAIRY,        STATUS,    75, 10,   0
 	move BELLY_DRUM,   EFFECT_BELLY_DRUM,          0, NORMAL,       STATUS,   100, 10,   0
-	move SLUDGE_BOMB,  EFFECT_POISON_HIT,        110, POISON,       SPECIAL,   85, 10,  30
+	move SLUDGE_BOMB,  EFFECT_POISON_HIT,        110, POISON,       SPECIAL,   85,  5,  10
 	move MUD_SLAP,     EFFECT_ACCURACY_DOWN_HIT,  20, GROUND,       SPECIAL,  100, 10, 100
 	move OCTAZOOKA,    EFFECT_ACCURACY_DOWN_HIT,  85, WATER,        SPECIAL,   85, 10,  50
 	move SPIKES,       EFFECT_SPIKES,              0, GROUND,       STATUS,   100, 20,   0
@@ -245,7 +245,7 @@ Moves:
 	move RAPID_SPIN,   EFFECT_RAPID_SPIN,         50, NORMAL,       PHYSICAL, 100, 40, 100
 	move SWEET_SCENT,  EFFECT_EVASION_DOWN,        0, NORMAL,       STATUS,   100, 20,   0
 	move IRON_TAIL,    EFFECT_DEFENSE_DOWN_HIT,  100, STEEL,        PHYSICAL,  75, 15,  30
-	move METAL_CLAW,   EFFECT_ATTACK_UP_HIT,      50, STEEL,        PHYSICAL,  95, 35,  10
+	move METAL_CLAW,   EFFECT_ATTACK_UP_HIT,      60, STEEL,        PHYSICAL, 100, 35,  20
 	move VITAL_THROW,  EFFECT_ALWAYS_HIT,         70, FIGHTING,     PHYSICAL, 100, 10,   0
 	move MORNING_SUN,  EFFECT_MORNING_SUN,         0, NORMAL,       STATUS,   100,  5,   0
 	move SYNTHESIS,    EFFECT_SYNTHESIS,           0, GRASS,        STATUS,   100,  5,   0

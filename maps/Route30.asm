@@ -128,7 +128,7 @@ TrainerYoungsterJoey:
 	checkevent EVENT_GOT_HP_UP_FROM_JOEY
 	iftrue .done
 	scall .RematchGift
-	verbosegiveitem HP_UP
+	verbosegiveitem FULL_HEAL
 	iffalse .PackFull
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	sjump .NumberAccepted
@@ -140,7 +140,7 @@ TrainerYoungsterJoey:
 	opentext
 	writetext YoungsterJoeyText_GiveHPUpAfterBattle
 	waitbutton
-	verbosegiveitem HP_UP
+	verbosegiveitem SUPER_POTION
 	iffalse .PackFull
 	clearevent EVENT_JOEY_HP_UP
 	setevent EVENT_GOT_HP_UP_FROM_JOEY

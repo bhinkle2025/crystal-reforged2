@@ -39,8 +39,8 @@ ItemEffects:
 	dw EvoStoneEffect      ; THUNDERSTONE
 	dw EvoStoneEffect      ; WATER_STONE
 	dw PocketPCEffect      ; POCKET_PC
-	dw VitaminEffect       ; HP_UP
-	dw VitaminEffect       ; PROTEIN
+	dw PocketReminderEffect; PCKT_REMIND
+	dw PocketDeleterEffect ; PCKT_DELETE
 	dw VitaminEffect       ; IRON
 	dw VitaminEffect       ; CARBOS
 	dw NoEffect            ; LUCKY_PUNCH
@@ -1250,8 +1250,6 @@ GetStatExpRelativePointer:
 	ret
 
 StatExpItemPointerOffsets:
-	db HP_UP,    MON_HP_EXP - MON_STAT_EXP
-	db PROTEIN, MON_ATK_EXP - MON_STAT_EXP
 	db IRON,    MON_DEF_EXP - MON_STAT_EXP
 	db CARBOS,  MON_SPD_EXP - MON_STAT_EXP
 	db CALCIUM, MON_SPC_EXP - MON_STAT_EXP
@@ -2272,6 +2270,14 @@ ItemfinderEffect:
 
 PocketPCEffect:
 	farcall PocketPCFunction
+	ret
+
+PocketReminderEffect:
+	farcall PocketReminderFunction
+	ret
+
+PocketDeleterEffect:
+	farcall PocketDeleterFunction
 	ret
 
 RestorePPEffect:

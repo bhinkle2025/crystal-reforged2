@@ -603,6 +603,8 @@ AideScript_WalkBalls1:
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksRight1
 	turnobject PLAYER, DOWN
 	scall AideScript_GiveYouBalls
+	scall AideScript_GivePocketReminder
+	scall AideScript_GivePocketDeleter
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft1
 	end
 
@@ -610,6 +612,8 @@ AideScript_WalkBalls2:
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksRight2
 	turnobject PLAYER, DOWN
 	scall AideScript_GiveYouBalls
+	scall AideScript_GivePocketReminder
+	scall AideScript_GivePocketDeleter
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft2
 	end
 
@@ -623,6 +627,26 @@ AideScript_GiveYouBalls:
 	writetext AideText_ExplainBalls
 	promptbutton
 	itemnotify
+	closetext
+	end
+
+AideScript_GivePocketReminder:
+	opentext
+	writetext AideText_GetPocketReminderText
+	promptbutton
+	giveitem PCKT_REMIND
+	writetext AideText_PocketReminderInfoText
+	waitbutton
+	closetext
+	end
+
+AideScript_GivePocketDeleter:
+	opentext
+	writetext AideText_GetPocketDeleterText
+	promptbutton
+	giveitem PCKT_DELETE
+	writetext AideText_PocketDeleterInfoText
+	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_NOOP
 	end
@@ -1521,6 +1545,36 @@ DidntTakeStarterText:
 	para "If you change" 
 	line "your mind,"
 	cont "it will be here."
+	done
+
+AideText_GetPocketReminderText:
+	text "One last thing!"
+	line "I have this."
+
+	para "It's a Pocket"
+	line "Reminder!"
+	done
+	
+AideText_PocketReminderInfoText:
+	text "Use this to manage"
+	line "your party's"
+
+	para "moves!"
+	done
+
+AideText_GetPocketDeleterText:
+	text "I also have this"
+	line "as well."
+
+	para "It's a Pocket"
+	line "Deleter!"
+	done
+	
+AideText_PocketDeleterInfoText:
+	text "Use this to delete"
+	line "your party's"
+
+	para "moves!"
 	done
 
 ElmsLab_MapEvents:

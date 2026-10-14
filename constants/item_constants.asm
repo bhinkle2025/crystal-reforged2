@@ -31,8 +31,8 @@
 	const THUNDERSTONE ; 17
 	const WATER_STONE  ; 18
 	const POCKET_PC    ; 19
-	const HP_UP        ; 1a
-	const PROTEIN      ; 1b
+	const PCKT_REMIND  ; 1a
+	const PCKT_DELETE  ; 1b
 	const IRON         ; 1c
 	const CARBOS       ; 1d
 	const LUCKY_PUNCH  ; 1e

@@ -135,7 +135,7 @@ BurnedTower1FHiddenFireStone:
 	hiddenitem FIRE_STONE, EVENT_BURNED_TOWER_1F_HIDDEN_FIRE_STONE
 
 BurnedTower1FHPUp:
-	itemball HP_UP
+	itemball ULTRA_BALL
 
 BurnedTowerMovement_PlayerWalksToRival:
 	step LEFT

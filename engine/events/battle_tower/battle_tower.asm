@@ -962,7 +962,7 @@ BattleTower_RandomlyChooseReward:
 	jr c, .okay
 	sub 6
 .okay
-	add HP_UP
+	add FULL_RESTORE
 	cp LUCKY_PUNCH
 	jr z, .loop
 	push af

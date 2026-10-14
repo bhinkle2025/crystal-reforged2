@@ -26,8 +26,8 @@ ItemDescriptions:
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
 	dw PocketPCDesc
-	dw HPUpDesc
-	dw ProteinDesc
+	dw PocketReminderDesc
+	dw PocketDeleterDesc
 	dw IronDesc
 	dw CarbosDesc
 	dw LuckyPunchDesc
@@ -358,13 +358,13 @@ PocketPCDesc:
 	db   "Access the PC"
 	next "right here!@"
 
-HPUpDesc:
-	db   "Raises the HP of"
-	next "one #MON.@"
+PocketReminderDesc:
+    db   "Recalls a #MON's"
+    next "forgotten moves.@"
 
-ProteinDesc:
-	db   "Raises ATTACK of"
-	next "one #MON.@"
+PocketDeleterDesc:
+	db   "Deletes a move"
+	next "from a #MON.@"
 
 IronDesc:
 	db   "Raises DEFENSE of"

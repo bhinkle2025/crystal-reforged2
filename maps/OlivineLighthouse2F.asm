@@ -96,7 +96,7 @@ TrainerSailorHuey:
 	checkevent EVENT_GOT_PROTEIN_FROM_HUEY
 	iftrue .SkipGift
 	scall .RematchGift
-	verbosegiveitem PROTEIN
+	verbosegiveitem FULL_HEAL
 	iffalse .PackFull
 	setevent EVENT_GOT_PROTEIN_FROM_HUEY
 	sjump .NumberAccepted
@@ -108,7 +108,7 @@ TrainerSailorHuey:
 	opentext
 	writetext SailorHueyGiveProteinText
 	waitbutton
-	verbosegiveitem PROTEIN
+	verbosegiveitem REVIVE
 	iffalse .PackFull
 	clearevent EVENT_HUEY_PROTEIN
 	setevent EVENT_GOT_PROTEIN_FROM_HUEY
