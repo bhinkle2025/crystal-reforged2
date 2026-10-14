@@ -2515,6 +2515,7 @@ wMonIDDigitsBuffer:: ds 5
 NEXTU
 ; mon submenu
 wMonSubmenuCount:: db
+wMonSubmenuScrollOffset:: db
 wMonSubmenuItems:: ds NUM_MONMENU_ITEMS + 1
 
 NEXTU

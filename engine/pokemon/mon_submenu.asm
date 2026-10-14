@@ -25,8 +25,13 @@ MonSubmenu:
 	db 1 ; default option
 
 .GetTopCoord:
-; [wMenuBorderTopCoord] = 1 + [wMenuBorderBottomCoord] - 2 * ([wMonSubmenuCount] + 1)
+	; Display a maximum of 8 menu entries.
 	ld a, [wMonSubmenuCount]
+	cp 8
+	jr c, .got_height
+	ld a, 8
+
+.got_height
 	inc a
 	add a
 	ld b, a
@@ -39,30 +44,100 @@ MonSubmenu:
 
 MonMenuLoop:
 .loop
-	ld a, MENU_UNUSED_3 | MENU_BACKUP_TILES_2 ; flags
+	ld a, MENU_UNUSED_3 | MENU_BACKUP_TILES_2
 	ld [wMenuDataFlags], a
+
+	; Limit visible entries to eight.
 	ld a, [wMonSubmenuCount]
+	cp 8
+	jr c, .got_count
+	ld a, 8
+
+.got_count
 	ld [wMenuDataItems], a
 	call InitVerticalMenuCursor
+
 	ld hl, w2DMenuFlags1
 	set 6, [hl]
+	; Allow the menu to detect scrolling at its edges.
+	set 3, [hl] ; Down
+	set 2, [hl] ; Up
+
 	call StaticMenuJoypad
+
+	; Did the cursor reach an edge?
+	ld a, [w2DMenuFlags2]
+	bit 7, a
+	jr nz, .scroll
+
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
+
 	ldh a, [hJoyPressed]
 	bit A_BUTTON_F, a
 	jr nz, .select
 	bit B_BUTTON_F, a
 	jr nz, .cancel
-	jr .loop
+	jp .loop
+
+.scroll
+	ldh a, [hJoyPressed]
+	bit D_DOWN_F, a
+	jr nz, .scroll_down
+	bit D_UP_F, a
+	jr nz, .scroll_up
+	jp .loop
+
+.scroll_down
+	; Stop at the final entry.
+	ld a, [wMonSubmenuCount]
+	cp 9
+	jp c, .loop
+	sub 8
+	ld b, a
+	ld a, [wMonSubmenuScrollOffset]
+	cp b
+	jp nc, .loop
+
+	ld hl, wMonSubmenuScrollOffset
+	inc [hl]
+
+	; Keep the cursor at the bottom.
+	ld a, 8
+	ld [wMenuCursorPosition], a
+	jr .redraw
+
+.scroll_up
+	ld hl, wMonSubmenuScrollOffset
+	ld a, [hl]
+	and a
+	jp z, .loop
+	dec [hl]
+
+	; Keep the cursor at the top.
+	ld a, 1
+	ld [wMenuCursorPosition], a
+
+.redraw
+	xor a
+	ldh [hBGMapMode], a
+	call MenuBox
+	call PopulateMonMenu
+	ld a, 1
+	ldh [hBGMapMode], a
+	jp .loop
 
 .cancel
 	ld a, MONMENUITEM_CANCEL
 	ret
 
 .select
+	; Convert visible cursor to actual list index.
 	ld a, [wMenuCursorY]
 	dec a
+	ld b, a
+	ld a, [wMonSubmenuScrollOffset]
+	add b
 	ld c, a
 	ld b, 0
 	ld hl, wMonSubmenuItems
@@ -74,12 +149,39 @@ PopulateMonMenu:
 	call MenuBoxCoord2Tile
 	ld bc, 2 * SCREEN_WIDTH + 2
 	add hl, bc
-	ld de, wMonSubmenuItems
+
+	; Start at the current scroll offset.
+	ld a, [wMonSubmenuScrollOffset]
+	ld c, a
+	ld b, 0
+	push hl
+	ld hl, wMonSubmenuItems
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+
+	; Draw at most eight entries.
+	ld a, [wMonSubmenuCount]
+	sub c
+	cp 8
+	jr c, .got_count
+	ld a, 8
+
+.got_count
+	ld b, a
+
 .loop
+	ld a, b
+	and a
+	ret z
+
 	ld a, [de]
 	inc de
 	cp -1
 	ret z
+
+	push bc
 	push de
 	push hl
 	call GetMonMenuString
@@ -88,6 +190,8 @@ PopulateMonMenu:
 	ld bc, 2 * SCREEN_WIDTH
 	add hl, bc
 	pop de
+	pop bc
+	dec b
 	jr .loop
 
 GetMonMenuString:
@@ -148,6 +252,8 @@ GetMonSubmenuItems:
 
 .skip_moves
 	ld a, MONMENUITEM_STATS
+	call AddMonMenuItem
+	ld a, MONMENUITEM_RENAME
 	call AddMonMenuItem
 	ld a, MONMENUITEM_SWITCH
 	call AddMonMenuItem
@@ -212,6 +318,7 @@ IsFieldMove:
 
 ResetMonSubmenu:
 	xor a
+	ld [wMonSubmenuScrollOffset], a
 	ld [wMonSubmenuCount], a
 	ld hl, wMonSubmenuItems
 	ld bc, NUM_MONMENU_ITEMS + 1

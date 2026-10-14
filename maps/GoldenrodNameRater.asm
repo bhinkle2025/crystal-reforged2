@@ -9,10 +9,32 @@ GoldenrodNameRater_MapScripts:
 GoldenrodNameRater:
 	faceplayer
 	opentext
-	special NameRater
+	writetext GoldenrodNameRaterText
 	waitbutton
 	closetext
 	end
+
+GoldenrodNameRaterText:
+	text "Hello, hello!"
+	line "I'm the NAME"
+	cont "RATER!"
+
+	para "I once named a"
+	line "SNORLAX Dave."
+
+	para "He didn't like"
+	line "that very much."
+
+	para "Neither did"
+	line "my wife, Dave."
+
+	para "Come to think"
+	line "of it..."
+
+	para "I haven't seen"
+	line "either of them"
+	cont "in years."
+	done
 
 GoldenrodNameRaterBookshelf:
 	jumpstd DifficultBookshelfScript

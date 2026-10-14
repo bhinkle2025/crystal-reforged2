@@ -142,6 +142,7 @@ PokemonActionSubmenu:
 	dbw MONMENUITEM_ROCKSMASH,  MonMenu_RockSmash
 	dbw MONMENUITEM_SWEETSCENT, MonMenu_SweetScent
 	dbw MONMENUITEM_STATS,      OpenPartyStats
+	dbw MONMENUITEM_RENAME,     RenamePartyMon
 	dbw MONMENUITEM_SWITCH,     SwitchPartyMons
 	dbw MONMENUITEM_ITEM,       GiveTakePartyMonItem
 	dbw MONMENUITEM_CANCEL,     CancelPokemonAction
@@ -579,6 +580,53 @@ MonMailAction:
 .MailSentToPCText:
 	text_far _MailSentToPCText
 	text_end
+
+RenamePartyMon:
+	; Eggs cannot be renamed.
+	ld a, [wCurPartySpecies]
+	cp EGG
+	jr z, .done
+
+	; Open the naming screen using a temporary buffer.
+	; This preserves the original nickname if canceled.
+	call LoadStandardMenuHeader
+	call ClearSprites
+
+	xor a ; PARTYMON
+	ld [wMonType], a
+
+	ld de, wMonOrItemNameBuffer
+	ld b, NAME_MON
+	farcall NamingScreen
+
+	; An empty entry leaves the existing name unchanged.
+	ld a, [wMonOrItemNameBuffer]
+	cp "@"
+	jr z, .restore
+
+	; Find the selected Pokémon's nickname.
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonNicknames
+	ld bc, MON_NAME_LENGTH
+	call AddNTimes
+
+	; Set destination to the party nickname.
+	ld d, h
+	ld e, l
+
+	; Set source to the newly entered nickname.
+	ld hl, wMonOrItemNameBuffer
+	ld bc, MON_NAME_LENGTH
+	call CopyBytes
+
+.restore
+	call RotateThreePalettesRight
+	call LoadStandardFont
+	call Call_ExitMenu
+
+.done
+	xor a
+	ret
 
 OpenPartyStats:
 	call LoadStandardMenuHeader
