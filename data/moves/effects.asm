@@ -1244,6 +1244,7 @@ Fly:
 	stab
 	damagevariation
 	checkhit
+	effectchance
 	moveanimnosub
 	raisesub
 	failuretext
@@ -1252,7 +1253,8 @@ Fly:
 	supereffectivetext
 	checkfaint
 	buildopponentrage
-	kingsrock
+	speedup
+	statupmessage
 	endmove
 
 TrapTarget:
@@ -2164,5 +2166,27 @@ SpeedUpHit:
 	checkfaint
 	buildopponentrage
 	speedup
+	statupmessage
+	endmove
+
+SpecialAttackUpHit:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	buildopponentrage
+	specialattackup
 	statupmessage
 	endmove

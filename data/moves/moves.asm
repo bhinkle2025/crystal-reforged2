@@ -32,7 +32,7 @@ Moves:
 	move GUST,         EFFECT_GUST,               40, FLYING,       SPECIAL,  100, 35,   0
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,       PHYSICAL, 100, 35,   0
 	move WHIRLWIND,    EFFECT_FORCE_SWITCH,        0, NORMAL,       STATUS,   100, 20,   0
-	move FLY,          EFFECT_FLY,                70, FLYING,       PHYSICAL,  95, 15,   0
+	move FLY,          EFFECT_FLY,                90, FLYING,       PHYSICAL,  95, 15,  20
 	move BIND,         EFFECT_TRAP_TARGET,        15, NORMAL,       PHYSICAL,  75, 20,   0
 	move SLAM,         EFFECT_NORMAL_HIT,         80, NORMAL,       PHYSICAL,  75, 20,   0
 	move VINE_WHIP,    EFFECT_NORMAL_HIT,         45, GRASS,        PHYSICAL, 100, 25,   0
@@ -70,7 +70,7 @@ Moves:
 	move MIST,         EFFECT_MIST,                0, ICE,          STATUS,   100, 30,   0
 	move WATER_GUN,    EFFECT_NORMAL_HIT,         40, WATER,        SPECIAL,  100, 25,   0
 	move HYDRO_PUMP,   EFFECT_NORMAL_HIT,        110, WATER,        SPECIAL,   80,  5,   0
-	move SURF,         EFFECT_NORMAL_HIT,         90, WATER,        SPECIAL,  100, 15,   0
+	move SURF,         EFFECT_SP_ATK_UP_HIT,      90, WATER,        SPECIAL,  100, 15,  10
 	move ICE_BEAM,     EFFECT_FREEZE_HIT,         90, ICE,          SPECIAL,  100, 10,  10
 	move BLIZZARD,     EFFECT_FREEZE_HIT,        110, ICE,          SPECIAL,   70,  5,  10
 	move PSYBEAM,      EFFECT_CONFUSE_HIT,        65, PSYCHIC_TYPE, SPECIAL,  100, 20,  10
@@ -96,7 +96,7 @@ Moves:
 	move PETAL_DANCE,  EFFECT_RAMPAGE,           120, GRASS,        SPECIAL,  100, 10,   0
 	move STRING_SHOT,  EFFECT_SPEED_DOWN,          0, BUG,          STATUS,    95, 40,   0
 	move DRAGON_RAGE,  EFFECT_STATIC_DAMAGE,      40, DRAGON,       SPECIAL,  100, 10,   0
-	move FIRE_SPIN,    EFFECT_TRAP_TARGET,        35, FIRE,         SPECIAL,   85, 15,   0
+	move FIRE_SPIN,    EFFECT_TRAP_TARGET,        50, FIRE,         SPECIAL,   85, 15,   0
 	move THUNDERSHOCK, EFFECT_PARALYZE_HIT,       40, ELECTRIC,     SPECIAL,  100, 30,  10
 	move THUNDERBOLT,  EFFECT_PARALYZE_HIT,       90, ELECTRIC,     SPECIAL,  100, 15,  10
 	move THUNDER_WAVE, EFFECT_PARALYZE,            0, ELECTRIC,     STATUS,   100, 20,   0
@@ -263,9 +263,9 @@ Moves:
 	move SHADOW_BALL,  EFFECT_SP_DEF_DOWN_HIT,    80, GHOST,        SPECIAL,  100, 15,  20
 	move FUTURE_SIGHT, EFFECT_FUTURE_SIGHT,      120, PSYCHIC_TYPE, SPECIAL,  100, 10,   0
 	move ROCK_SMASH,   EFFECT_DEFENSE_DOWN_HIT,   75, FIGHTING,     PHYSICAL, 100, 15,  50
-	move WHIRLPOOL,    EFFECT_TRAP_TARGET,        35, WATER,        SPECIAL,   85, 15,   0
+	move WHIRLPOOL,    EFFECT_TRAP_TARGET,        50, WATER,        SPECIAL,   85, 15,   0
 	move BEAT_UP,      EFFECT_BEAT_UP,            30, DARK,         PHYSICAL, 100, 10,   0
 	move NASTY_PLOT,   EFFECT_SP_ATK_UP_2,         0, DARK,         STATUS,     0, 20,   0
 	move AIR_SLASH,    EFFECT_FLINCH_HIT,         75, FLYING,       SPECIAL,   95, 15,  30
-	move FAIRY_WIND,   EFFECT_SPEED_UP_HIT,       50, FAIRY,        SPECIAL,  100, 20, 100
+	move FAIRY_WIND,   EFFECT_SPEED_UP_HIT,       60, FAIRY,        SPECIAL,  100, 20, 100
 	assert_table_length NUM_ATTACKS
