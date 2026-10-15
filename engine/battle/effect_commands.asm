@@ -1127,6 +1127,18 @@ BattleCommand_Critical:
 	and a
 	ret z
 
+	; Octazooka always lands a critical hit.
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp OCTAZOOKA
+	jr nz, .normal_critical
+
+	ld a, 1
+	ld [wCriticalHit], a
+	ret
+
+.normal_critical
+
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wEnemyMonItem
