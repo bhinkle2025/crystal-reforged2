@@ -231,6 +231,18 @@ Options_BattleScene:
 .Off: db "OFF@"
 
 Options_BattleStyle:
+	; Hard Mode always uses Set battle style.
+	ld de, EVENT_HARD_MODE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .NormalMode
+
+	ld hl, wOptions
+	jr .ToggleSet
+
+.NormalMode:
 	ld hl, wOptions
 	ldh a, [hJoyPressed]
 	bit D_LEFT_F, a

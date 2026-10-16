@@ -865,6 +865,58 @@ AfterChikoritaMovement:
 	turn_head UP
 	step_end
 
+ElmsLabHardModeBookshelf:
+	opentext
+	checkevent EVENT_HARD_MODE
+	iftrue .Disable
+
+	writetext HardModeEnableText
+	yesorno
+	iffalse .Cancel
+	setevent EVENT_HARD_MODE
+	writetext HardModeEnabledText
+	sjump .Finish
+
+.Disable:
+	writetext HardModeDisableText
+	yesorno
+	iffalse .Cancel
+	clearevent EVENT_HARD_MODE
+	writetext HardModeDisabledText
+
+.Finish:
+	waitbutton
+.Cancel:
+	closetext
+	end
+
+HardModeEnableText:
+	text "HARD MODE"
+
+	para "Set battle style."
+	line "No battle items."
+
+	para "Badge-based"
+	line "level caps."
+
+	para "Enable HARD MODE?"
+	done
+
+HardModeEnabledText:
+	text "HARD MODE"
+	line "enabled!"
+	done
+
+HardModeDisableText:
+	text "Disable"
+	line "HARD MODE?"
+	done
+
+HardModeDisabledText:
+	text "HARD MODE"
+	line "disabled!"
+	done
+
 ElmText_Intro:
 	text "ELM: <PLAY_G>!"
 	line "There you are!"
@@ -1604,7 +1656,7 @@ ElmsLab_MapEvents:
 	bg_event  1,  7, BGEVENT_READ, ElmsLabTravelTip2
 	bg_event  2,  7, BGEVENT_READ, ElmsLabTravelTip3
 	bg_event  3,  7, BGEVENT_READ, ElmsLabTravelTip4
-	bg_event  6,  7, BGEVENT_READ, ElmsLabBookshelf
+	bg_event  6,  7, BGEVENT_READ, ElmsLabHardModeBookshelf
 	bg_event  7,  7, BGEVENT_READ, ElmsLabBookshelf
 	bg_event  8,  7, BGEVENT_READ, ElmsLabBookshelf
 	bg_event  9,  7, BGEVENT_READ, ElmsLabBookshelf

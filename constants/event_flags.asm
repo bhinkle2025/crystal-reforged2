@@ -1463,7 +1463,8 @@
 	const EVENT_GOT_YOUNGSTER_POKEMON
 	const EVENT_ELM_GAVE_FINAL_STARTER
 	const EVENT_CAN_TAKE_FINAL_STARTER
-; Unused: next 48 events
+	const EVENT_HARD_MODE
+; Unused: next 47 events
 
 	const_next 2048
 DEF NUM_EVENTS EQU const_value ; 800
