@@ -783,6 +783,29 @@ BattlePack:
 ItemSubmenu:
 	farcall CheckItemContext
 	ld a, [wItemAttributeValue]
+
+	; Hard Mode: only allow Poke Balls.
+	push af
+	ld de, EVENT_HARD_MODE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .NormalMode
+
+	; Hard Mode is enabled.
+	ld a, [wCurPocket]
+	cp BALL_POCKET
+	jr z, .NormalMode
+
+	; Disable USE for other pockets.
+	pop af
+	xor a
+	jr TMHMSubmenu
+
+.NormalMode:
+	pop af
+
 TMHMSubmenu:
 	and a
 	jr z, .NoUse
