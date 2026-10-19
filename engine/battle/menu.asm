@@ -3,7 +3,21 @@ LoadBattleMenu:
 	call LoadMenuHeader
 	ld a, [wBattleMenuCursorPosition]
 	ld [wMenuCursorPosition], a
+
+.select
 	call InterpretBattleMenu
+	jr nc, .chosen
+
+	; B pressed: select RUN in wild battles.
+	ld a, [wBattleMode]
+	dec a
+	jr nz, .select
+
+	ld a, 4 ; RUN
+	ld [wMenuCursorPosition], a
+	jr .select
+
+.chosen
 	ld a, [wMenuCursorPosition]
 	ld [wBattleMenuCursorPosition], a
 	call ExitMenu
@@ -35,7 +49,7 @@ BattleMenuHeader:
 	db 1 ; default option
 
 .MenuData:
-	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
+	db STATICMENU_CURSOR ; flags
 	dn 2, 2 ; rows, columns
 	db 6 ; spacing
 	dba .Text
