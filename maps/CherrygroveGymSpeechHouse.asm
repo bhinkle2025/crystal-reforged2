@@ -16,7 +16,7 @@ CherrygroveGymSpeechHouseBugCatcherScript:
 
 CherrygroveGymSpeechHouseRocketScript:
 	faceplayer
-	checkevent EVENT_BEAT_FALKNER
+	checkevent EVENT_HARD_MODE
 	iftrue .freecandy
 	opentext
 	writetext DentistCommissionText
@@ -33,7 +33,7 @@ CherrygroveGymSpeechHouseRocketScript:
 	sjump .GiveCandy
 
 .GiveCandy
-	giveitem CANDY_BAG
+	giveitem RARE_CANDY, 99
 	iffalse .NoRoom
 	writetext CandyGivenText
 	promptbutton

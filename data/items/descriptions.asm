@@ -50,7 +50,7 @@ ItemDescriptions:
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw CandyBagDesc
+	dw LinkingCordDesc
 	dw XDefendDesc
 	dw XSpeedDesc
 	dw XSpecialDesc
@@ -453,9 +453,9 @@ XAttackDesc:
 	db   "Raises ATTACK."
 	next "(1 BTL)@"
 
-CandyBagDesc:
-	db "A bag of sweets that"
-	next "raises a #MON's LV.@"
+LinkingCordDesc:
+	db   "Evolves certain"
+	next "kinds of #MON.@"
 
 XDefendDesc:
 	db   "Raises DEFENSE."

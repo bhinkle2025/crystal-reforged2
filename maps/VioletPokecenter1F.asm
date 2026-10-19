@@ -77,7 +77,25 @@ VioletPokecenter1F_ElmsAideScript:
 	sjump .AskTakeEgg
 
 VioletPokecenter1FGameboyKidScript:
-	jumptextfaceplayer VioletPokecenter1FGameboyKidText
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_LINKING_CORD
+	iftrue .AlreadyReceived
+	writetext LinkingCordGiftText
+	promptbutton
+	verbosegiveitem LINKING_CORD
+	iffalse .NoRoom
+	setevent EVENT_GOT_LINKING_CORD
+
+.AlreadyReceived:
+	writetext VioletPokecenter1FGameboyKidText
+	waitbutton
+
+.NoRoom:
+	writetext LinkingCordNoRoomText
+	waitbutton
+	closetext
+	end
 
 VioletPokecenter1FGentlemanScript:
 	jumptextfaceplayer VioletPokecenter1FGentlemanText
@@ -157,33 +175,28 @@ VioletPokecenterElmsAideAskEggText:
 	line "take the EGG?"
 	done
 
-VioletPokecenterFarawayLinkText: ; unreferenced
-	text "I've been thinking"
-	line "it'd be great to"
+LinkingCordGiftText:
+	text "This LINKING CORD"
+	line "can help certain"
+	cont "#MON evolve!"
 
-	para "be able to link up"
-	line "and battle with my"
-
-	para "friends who live"
-	line "far away."
-	done
-
-VioletPokecenterMobileAdapterText: ; unreferenced
-	text "I just battled a"
-	line "friend in CIANWOOD"
-	cont "over a link."
-
-	para "If you connect a"
-	line "MOBILE ADAPTER,"
-
-	para "you can link with"
-	line "a friend far away."
+	para "Here, take it!"
 	done
 
 VioletPokecenter1FGameboyKidText:
-	text "A guy named BILL"
-	line "made the #MON"
-	cont "PC storage system."
+	text "That LINKING CORD"
+	line "I gave you lets"
+
+	para "certain #MON"
+	line "evolve without"
+	cont "having to trade!"
+	done
+
+LinkingCordNoRoomText:
+	text "Your PACK is full!"
+
+	para "Come back when"
+	line "you've made room!"
 	done
 
 VioletPokecenter1FGentlemanText:
