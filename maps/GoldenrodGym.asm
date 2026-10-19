@@ -51,6 +51,7 @@ GoldenrodGymWhitneyScript:
 	checkevent EVENT_GOT_TM45_ATTRACT
 	iftrue .GotAttract
 	checkflag ENGINE_PLAINBADGE
+	callasm UpdateLevelCap
 	iftrue .GotPlainBadge
 	writetext WhitneyWhatDoYouWantText
 	promptbutton

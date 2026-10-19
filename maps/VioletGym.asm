@@ -27,6 +27,7 @@ VioletGymFalknerScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_ZEPHYRBADGE
+	callasm UpdateLevelCap
 	readvar VAR_BADGES
 	scall VioletGymActivateRockets
 .FightDone:

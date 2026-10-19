@@ -159,6 +159,7 @@ DragonShrineTakeTestScript:
 	writetext DragonShrineHereRisingBadgeText
 	waitbutton
 	setflag ENGINE_RISINGBADGE
+	callasm UpdateLevelCap
 	playsound SFX_GET_BADGE
 	waitsfx
 	special RestartMapMusic

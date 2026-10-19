@@ -30,6 +30,7 @@ AzaleaGymBugsyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_HIVEBADGE
+	callasm UpdateLevelCap
 	readvar VAR_BADGES
 	scall AzaleaGymActivateRockets
 .FightDone:

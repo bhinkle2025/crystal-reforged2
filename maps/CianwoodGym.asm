@@ -47,6 +47,7 @@ CianwoodGymChuckScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_STORMBADGE
+	callasm UpdateLevelCap
 	readvar VAR_BADGES
 	scall CianwoodGymActivateRockets
 .FightDone:

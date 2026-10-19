@@ -1315,3 +1315,4 @@ DoBikeStep::
 	ret
 
 INCLUDE "engine/overworld/cmd_queue.asm"
+INCLUDE "engine/events/level_cap.asm"

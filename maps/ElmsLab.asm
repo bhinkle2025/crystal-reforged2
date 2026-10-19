@@ -874,6 +874,7 @@ ElmsLabHardModeBookshelf:
 	yesorno
 	iffalse .Cancel
 	setevent EVENT_HARD_MODE
+	callasm UpdateLevelCap
 	writetext HardModeEnabledText
 	sjump .Finish
 
@@ -882,6 +883,7 @@ ElmsLabHardModeBookshelf:
 	yesorno
 	iffalse .Cancel
 	clearevent EVENT_HARD_MODE
+	callasm UpdateLevelCap
 	writetext HardModeDisabledText
 
 .Finish:
@@ -891,7 +893,10 @@ ElmsLabHardModeBookshelf:
 	end
 
 HardModeEnableText:
-	text "HARD MODE"
+	text "It's full of"
+	line "difficult books."
+
+	para "HARD MODE"
 
 	para "Set battle style."
 	line "No battle items."
@@ -908,7 +913,10 @@ HardModeEnabledText:
 	done
 
 HardModeDisableText:
-	text "Disable"
+	text "It's full of"
+	line "difficult books."
+
+	para "Disable"
 	line "HARD MODE?"
 	done
 

@@ -30,6 +30,7 @@ MahoganyGymPryceScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_GLACIERBADGE
+	callasm UpdateLevelCap
 	readvar VAR_BADGES
 	scall MahoganyGymActivateRockets
 .FightDone:
