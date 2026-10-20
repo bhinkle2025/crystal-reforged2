@@ -39,7 +39,7 @@ VioletGymFalknerScript:
 	specialphonecall SPECIALCALL_ASSISTANT
 	writetext FalknerZephyrBadgeText
 	promptbutton
-	verbosegiveitem TM_MUD_SLAP
+	verbosegiveitem TM_ROOST
 	iffalse .NoRoomForMudSlap
 	setevent EVENT_GOT_TM31_MUD_SLAP
 	writetext FalknerTMMudSlapText
@@ -179,17 +179,24 @@ FalknerTMMudSlapText:
 	cont "you like."
 
 	para "TM31 contains"
-	line "MUD-SLAP."
+	line "ROOST."
 
-	para "It reduces the"
-	line "enemy's accuracy"
+	para "It restores half"
+	line "a #MON's HP."
 
-	para "while it causes"
-	line "damage."
+	para "But a FLYING-type"
+	line "loses that type"
+	cont "for the turn."
 
-	para "In other words, it"
-	line "is both defensive"
-	cont "and offensive."
+	para "Even birds must"
+	line "land to rest!"
+
+	para "Knowing when to"
+	line "rest is just as"
+
+	para "important as"
+	line "knowing when to"
+	cont "attack!"
 	done
 
 FalknerFightDoneText:

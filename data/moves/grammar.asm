@@ -75,7 +75,7 @@ MoveGrammar:
 	db ABSORB
 	db STRING_SHOT
 	db EARTHQUAKE
-	db FISSURE
+	db ROOST
 	db DIG
 	db TOXIC
 	db SCREECH

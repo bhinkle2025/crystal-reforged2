@@ -607,6 +607,11 @@ wSomeoneIsRampaging:: db
 
 wPlayerJustGotFrozen:: db
 wEnemyJustGotFrozen:: db
+; Roost temporary typing
+wPlayerRoostOriginalTypes:: ds 2
+wPlayerRoostActive:: db
+wEnemyRoostOriginalTypes:: ds 2
+wEnemyRoostActive:: db
 wBattleEnd::
 
 

@@ -2,6 +2,8 @@
 
 DoBattle:
 	xor a
+	ld [wPlayerRoostActive], a
+	ld [wEnemyRoostActive], a
 	ld [wBattleParticipantsNotFainted], a
 	ld [wBattleParticipantsIncludingFainted], a
 	ld [wBattlePlayerAction], a
@@ -225,6 +227,7 @@ BattleTurn:
 	jr nz, .quit
 
 	call HandleBetweenTurnEffects
+	farcall RestoreRoostTypes
 	ld a, [wBattleEnded]
 	and a
 	jr nz, .quit
@@ -232,6 +235,7 @@ BattleTurn:
 
 .quit
 	pop af
+	farcall RestoreRoostTypes
 	ldh [hInMenu], a
 	ret
 
@@ -3552,6 +3556,7 @@ ShowSetEnemyMonAndSendOutAnimation:
 
 NewEnemyMonStatus:
 	xor a
+	ld [wEnemyRoostActive], a
 	ld [wLastPlayerCounterMove], a
 	ld [wLastEnemyCounterMove], a
 	ld [wLastEnemyMove], a
@@ -4044,6 +4049,7 @@ SendOutPlayerMon:
 
 NewBattleMonStatus:
 	xor a
+	ld [wPlayerRoostActive], a
 	ld [wLastPlayerCounterMove], a
 	ld [wLastEnemyCounterMove], a
 	ld [wLastPlayerMove], a

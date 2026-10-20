@@ -90,6 +90,8 @@ VioletPokecenter1FGameboyKidScript:
 .AlreadyReceived:
 	writetext VioletPokecenter1FGameboyKidText
 	waitbutton
+	closetext
+	end
 
 .NoRoom:
 	writetext LinkingCordNoRoomText

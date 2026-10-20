@@ -90,7 +90,7 @@ MoveDescriptions::
 	dw ThunderDescription
 	dw RockThrowDescription
 	dw EarthquakeDescription
-	dw FissureDescription
+	dw RoostDescription
 	dw DigDescription
 	dw ToxicDescription
 	dw ConfusionDescription
@@ -623,9 +623,9 @@ EarthquakeDescription:
 	db   "Tough but useless"
 	next "vs. flying foes.@"
 
-FissureDescription:
-	db   "A ground-type,"
-	next "one-hit KO attack.@"
+RoostDescription:
+	db   "Restores HP. Loses"
+	next "FLYING this turn.@"
 
 DigDescription:
 	db   "1st turn: Burrow"

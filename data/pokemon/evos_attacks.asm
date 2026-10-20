@@ -672,7 +672,6 @@ DiglettEvosAttacks:
 	db 25, SAND_ATTACK
 	db 33, SLASH
 	db 41, EARTHQUAKE
-	db 49, FISSURE
 	db 0 ; no more level-up moves
 
 DugtrioEvosAttacks:
@@ -687,7 +686,6 @@ DugtrioEvosAttacks:
 	db 25, SAND_ATTACK
 	db 37, SLASH
 	db 49, EARTHQUAKE
-	db 61, FISSURE
 	db 0 ; no more level-up moves
 
 MeowthEvosAttacks:
@@ -2256,8 +2254,9 @@ HoothootEvosAttacks:
 	db 18, AIR_SLASH
 	db 22, REFLECT
 	db 28, PSYCHIC_M
+	db 30, ROOST
 	db 33, MOONBLAST
-	db 48, DREAM_EATER
+	db 38, DREAM_EATER
 	db 0 ; no more level-up moves
 
 NoctowlEvosAttacks:
@@ -2271,8 +2270,9 @@ NoctowlEvosAttacks:
 	db 18, AIR_SLASH
 	db 22, REFLECT
 	db 28, PSYCHIC_M
+	db 30, ROOST
 	db 33, MOONBLAST
-	db 48, DREAM_EATER
+	db 38, DREAM_EATER
 	db 0 ; no more level-up moves
 
 LedybaEvosAttacks:
@@ -2285,6 +2285,7 @@ LedybaEvosAttacks:
 	db 12, REFLECT
 	db 12, SAFEGUARD
 	db 19, GUST
+	db 19, ROOST
 	db 22, COMET_PUNCH
 	db 26, BATON_PASS
 	db 29, AGILITY
@@ -2303,6 +2304,7 @@ LedianEvosAttacks:
 	db 12, REFLECT
 	db 12, SAFEGUARD
 	db 19, GUST
+	db 19, ROOST
 	db 22, COMET_PUNCH
 	db 26, BATON_PASS
 	db 29, AGILITY

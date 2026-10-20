@@ -1709,8 +1709,6 @@ BattleCommand_CheckHit:
 
 	cp EARTHQUAKE
 	ret z
-	cp FISSURE
-	ret z
 	cp MAGNITUDE
 	ret
 
@@ -6041,6 +6039,15 @@ BattleCommand_Heal:
 	call BattleCommand_SwitchTurn
 	call UpdateUserInParty
 	call RefreshBattleHuds
+
+	; Apply Roost's temporary type change.
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp ROOST
+	jr nz, .show_heal_text
+	call ApplyRoostType
+
+.show_heal_text
 	ld hl, RegainedHealthText
 	jp StdBattleTextbox
 
@@ -6048,6 +6055,87 @@ BattleCommand_Heal:
 	call AnimateFailedMove
 	ld hl, HPIsFullText
 	jp StdBattleTextbox
+
+ApplyRoostType:
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wBattleMonType1
+	ld de, wPlayerRoostOriginalTypes
+	jr z, .got_pointers
+	ld hl, wEnemyMonType1
+	ld de, wEnemyRoostOriginalTypes
+
+.got_pointers
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	ld c, a
+
+	; Do nothing if neither type is Flying.
+	cp FLYING
+	jr z, .remove_flying
+	ld a, b
+	cp FLYING
+	ret nz
+
+.remove_flying
+	; Save both original types.
+	ld a, b
+	ld [de], a
+	inc de
+	ld a, c
+	ld [de], a
+	inc de
+	ld a, 1
+	ld [de], a
+
+	; Replace Flying with the other type.
+	ld a, b
+	cp FLYING
+	jr nz, .second_is_flying
+
+	ld a, c
+	cp FLYING
+	jr nz, .write_new_type
+	ld a, NORMAL
+
+.write_new_type
+	ld [hld], a
+	ld [hl], a
+	ret
+
+.second_is_flying
+	ld a, b
+	ld [hl], a
+	ret
+
+
+RestoreRoostTypes:
+	; Restore the player's types.
+	ld a, [wPlayerRoostActive]
+	and a
+	jr z, .enemy
+
+	xor a
+	ld [wPlayerRoostActive], a
+	ld a, [wPlayerRoostOriginalTypes]
+	ld [wBattleMonType1], a
+	ld a, [wPlayerRoostOriginalTypes + 1]
+	ld [wBattleMonType2], a
+
+.enemy
+	; Restore the enemy's types.
+	ld a, [wEnemyRoostActive]
+	and a
+	ret z
+
+	xor a
+	ld [wEnemyRoostActive], a
+	ld a, [wEnemyRoostOriginalTypes]
+	ld [wEnemyMonType1], a
+	ld a, [wEnemyRoostOriginalTypes + 1]
+	ld [wEnemyMonType2], a
+	ret
 
 INCLUDE "engine/battle/move_effects/transform.asm"
 
