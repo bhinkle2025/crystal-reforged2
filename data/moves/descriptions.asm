@@ -660,8 +660,8 @@ QuickAttackDescription:
 	next "in the first hit.@"
 
 RageDescription:
-	db   "Raises ATTACK if"
-	next "the user is hit.@"
+	db   "Heavily strikes"
+	next "switching #MON.@"
 
 TeleportDescription:
 	db   "A move for fleeing"

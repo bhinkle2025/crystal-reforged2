@@ -378,21 +378,21 @@ JohtoGrassWildMons:
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	;   %, species,         min, max
-	db 30, NIDORAN_M,        10,  19
-	db 30, NIDORAN_F,        10,  19
-	db 20, LEDYBA,           10,  19
-	db 10, PIDGEY,           10,  19
-	db  5, CATERPIE,         10,  19
-	db  4, WEEDLE,           10,  19
+	db 30, NIDORAN_M,         5,  19
+	db 30, NIDORAN_F,         5,  19
+	db 20, LEDYBA,            5,  19
+	db 10, PIDGEY,            5,  19
+	db  5, CATERPIE,          5,  19
+	db  4, WEEDLE,            5,  19
 	db  1, LEDIAN,           10,  19
 	; day
 	;   %, species,         min, max
-	db 30, NIDORAN_F,        10,  19
-	db 30, NIDORAN_M,        10,  19
-	db 20, SUNKERN,          10,  19
-	db 10, PIDGEY,           10,  19
-	db  5, CATERPIE,         10,  19
-	db  4, WEEDLE,           10,  19
+	db 30, NIDORAN_F,         5,  19
+	db 30, NIDORAN_M,         5,  19
+	db 20, SUNKERN,           5,  19
+	db 10, PIDGEY,            5,  19
+	db  5, CATERPIE,          5,  19
+	db  4, WEEDLE,            5,  19
 	db  1, SUNFLORA,         10,  19
 	; nite
 	;   %, species,         min, max

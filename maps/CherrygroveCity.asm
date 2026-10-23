@@ -4,6 +4,7 @@
 	const CHERRYGROVECITY_TEACHER
 	const CHERRYGROVECITY_YOUNGSTER
 	const CHERRYGROVECITY_FISHER
+	const CHERRYGROVECITY_GOOD_ROD_FISHER
 
 CherrygroveCity_MapScripts:
 	def_scene_scripts
@@ -205,6 +206,56 @@ CherrygroveYoungsterScript:
 	waitbutton
 	closetext
 	end
+
+CherrygroveGoodRodFisherScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_GOOD_ROD
+	iftrue .AlreadyReceived
+	writetext CherrygroveGoodRodIntroText
+	promptbutton
+	verbosegiveitem GOOD_ROD
+	iffalse .NoRoom
+	setevent EVENT_GOT_GOOD_ROD
+
+.AlreadyReceived:
+	writetext CherrygroveGoodRodAfterText
+	waitbutton
+	closetext
+	end
+
+.NoRoom:
+	writetext CherrygroveGoodRodNoRoomText
+	waitbutton
+	closetext
+	end
+
+CherrygroveGoodRodIntroText:
+	text "Fishing is a"
+	line "wonderful hobby!"
+
+	para "Here, take this"
+	line "spare GOOD ROD!"
+
+	para "Try your luck"
+	line "at the water!"
+	done
+
+CherrygroveGoodRodAfterText:
+	text "Different waters"
+	line "have different"
+	cont "#MON!"
+
+	para "Try fishing"
+	line "everywhere!"
+	done
+
+CherrygroveGoodRodNoRoomText:
+	text "Your PACK is full!"
+
+	para "Come back when"
+	line "you have room!"
+	done
 
 MysticWaterGuy:
 	faceplayer
@@ -570,3 +621,4 @@ CherrygroveCity_MapEvents:
 	object_event 27, 12, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, MysticWaterGuy, -1
+	object_event 11,  9, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CherrygroveGoodRodFisherScript, -1
