@@ -37,14 +37,14 @@ EvolutionMoves::
 	db METRONOME    ; CLEFAIRY
 	db MOONBLAST    ; CLEFABLE
 	db NO_MOVE      ; VULPIX
-	db NO_MOVE      ; NINETALES
-	db NO_MOVE      ; JIGGLYPUFF
-	db NO_MOVE      ; WIGGLYTUFF
+	db FLAMETHROWER ; NINETALES
+	db MIMIC        ; JIGGLYPUFF
+	db PLAY_ROUGH   ; WIGGLYTUFF
 	db NO_MOVE      ; ZUBAT
 	db NO_MOVE      ; GOLBAT
 	db NO_MOVE      ; ODDISH
-	db NO_MOVE      ; GLOOM
-	db NO_MOVE      ; VILEPLUME
+	db ACID         ; GLOOM
+	db SOLARBEAM    ; VILEPLUME
 	db NO_MOVE      ; PARAS
 	db NO_MOVE      ; PARASECT
 	db NO_MOVE      ; VENONAT
@@ -58,16 +58,16 @@ EvolutionMoves::
 	db NO_MOVE      ; MANKEY
 	db RAGE         ; PRIMEAPE
 	db NO_MOVE      ; GROWLITHE
-	db EXTREMESPEED ; ARCANINE
+	db FLAMETHROWER ; ARCANINE
 	db NO_MOVE      ; POLIWAG
-	db NO_MOVE      ; POLIWHIRL
-	db SUBMISSION   ; POLIWRATH
+	db MEDITATE     ; POLIWHIRL
+	db FOCUS_BLAST  ; POLIWRATH
 	db NO_MOVE      ; ABRA
 	db CONFUSION    ; KADABRA
 	db FOCUS_BLAST  ; ALAKAZAM
 	db NO_MOVE      ; MACHOP
 	db NO_MOVE      ; MACHOKE
-	db CROSS_CHOP   ; MACHAMP
+	db SUBMISSION   ; MACHAMP
 	db NO_MOVE      ; BELLSPROUT
 	db NO_MOVE      ; WEEPINBELL
 	db NO_MOVE      ; VICTREEBEL
@@ -98,9 +98,9 @@ EvolutionMoves::
 	db NO_MOVE      ; DROWZEE
 	db NO_MOVE      ; HYPNO
 	db NO_MOVE      ; KRABBY
-	db NO_MOVE      ; KINGLER
+	db CRABHAMMER   ; KINGLER
 	db NO_MOVE      ; VOLTORB
-	db NO_MOVE      ; ELECTRODE
+	db EXPLOSION    ; ELECTRODE
 	db NO_MOVE      ; EXEGGCUTE
 	db STOMP        ; EXEGGUTOR
 	db NO_MOVE      ; CUBONE
@@ -111,21 +111,21 @@ EvolutionMoves::
 	db NO_MOVE      ; KOFFING
 	db NO_MOVE      ; WEEZING
 	db NO_MOVE      ; RHYHORN
-	db NO_MOVE      ; RHYDON
+	db ROCK_SLIDE   ; RHYDON
 	db NO_MOVE      ; CHANSEY
 	db NO_MOVE      ; TANGELA
 	db NO_MOVE      ; KANGASKHAN
 	db NO_MOVE      ; HORSEA
 	db NO_MOVE      ; SEADRA
 	db NO_MOVE      ; GOLDEEN
-	db NO_MOVE      ; SEAKING
+	db WATERFALL    ; SEAKING
 	db NO_MOVE      ; STARYU
 	db NO_MOVE      ; STARMIE
 	db NO_MOVE      ; MR_MIME
 	db NO_MOVE      ; SCYTHER
 	db NO_MOVE      ; JYNX
-	db NO_MOVE      ; ELECTABUZZ
-	db NO_MOVE      ; MAGMAR
+	db THUNDERBOLT  ; ELECTABUZZ
+	db FLAMETHROWER ; MAGMAR
 	db NO_MOVE      ; PINSIR
 	db NO_MOVE      ; TAUROS
 	db NO_MOVE      ; MAGIKARP
