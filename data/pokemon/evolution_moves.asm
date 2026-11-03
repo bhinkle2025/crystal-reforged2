@@ -70,7 +70,7 @@ EvolutionMoves::
 	db SUBMISSION   ; MACHAMP
 	db NO_MOVE      ; BELLSPROUT
 	db NO_MOVE      ; WEEPINBELL
-	db NO_MOVE      ; VICTREEBEL
+	db LEECH_LIFE   ; VICTREEBEL
 	db NO_MOVE      ; TENTACOOL
 	db WRAP         ; TENTACRUEL
 	db NO_MOVE      ; GEODUDE
@@ -198,7 +198,7 @@ EvolutionMoves::
 	db CONFUSION    ; ESPEON
 	db PURSUIT      ; UMBREON
 	db NO_MOVE      ; MURKROW
-	db NO_MOVE      ; SLOWKING
+	db FUTURE_SIGHT ; SLOWKING
 	db NO_MOVE      ; MISDREAVUS
 	db NO_MOVE      ; UNOWN
 	db NO_MOVE      ; WOBBUFFET
