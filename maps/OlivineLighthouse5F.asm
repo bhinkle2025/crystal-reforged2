@@ -36,7 +36,7 @@ OlivineLighthouse5FRareCandy:
 	itemball RARE_CANDY
 
 OlivineLighthouse5FSuperRepel:
-	itemball GREAT_BALL
+	itemball TM_VOLT_SWITCH
 
 OlivineLighthouse5FTMSwagger:
 	itemball TM_SWAGGER

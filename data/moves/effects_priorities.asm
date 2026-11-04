@@ -1,6 +1,7 @@
 MoveEffectPriorities:
 	db EFFECT_PROTECT,      4
 	db EFFECT_ENDURE,       4
+	db EFFECT_ATTRACT,      3
 	db EFFECT_TRANSFORM,    3
 	db EFFECT_SLEEP_TALK,	3
 	db EFFECT_THIEF,        2

@@ -169,12 +169,12 @@ PowerPlantManager:
 .ReturnedMachinePart:
 	checkevent EVENT_GOT_TM07_ZAP_CANNON
 	iftrue .GotZapCannon
-	writetext PowerPlantManagerTakeThisTMText
+	writetext PowerPlantManagerTakeThisThunderstoneText
 	promptbutton
-	verbosegiveitem TM_ZAP_CANNON
+	verbosegiveitem THUNDERSTONE
 	iffalse .NoRoom
 	setevent EVENT_GOT_TM07_ZAP_CANNON
-	writetext PowerPlantManagerTM07IsZapCannonText
+	writetext PowerPlantManagerThunderstoneText
 	waitbutton
 .NoRoom:
 	closetext
@@ -357,25 +357,28 @@ PowerPlantManagerThatsThePartText:
 	cont "You found it?"
 	done
 
-PowerPlantManagerTakeThisTMText:
+PowerPlantManagerTakeThisThunderstoneText:
 	text "Wahah! Thanks!"
 
-	para "Here! Take this TM"
-	line "as a reward!"
+	para "Here! Take this"
+	line "THUNDERSTONE as"
+	cont "a reward!"
 	done
 
-PowerPlantManagerTM07IsZapCannonText:
-	text "MANAGER: TM07 is"
-	line "my ZAP CANNON."
+PowerPlantManagerThunderstoneText:
+	text "MANAGER: That's"
+	line "a THUNDERSTONE!"
 
-	para "It's a powerful"
-	line "technique!"
+	para "It's packed with"
+	line "electric energy!"
 
-	para "It's not what any-"
-	line "one would consider"
+	para "Some #MON can"
+	line "use its power to"
+	cont "evolve!"
 
-	para "accurate, but it"
-	line "packs a wallop!"
+	para "Wahah! Just like"
+	line "this POWER PLANT,"
+	cont "it's electrifying!"
 	done
 
 PowerPlantManagerMyBelovedGeneratorText:
