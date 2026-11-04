@@ -452,7 +452,7 @@ AI_Smart_EffectHandlers:
 	dbw EFFECT_ENDURE,           AI_Smart_Endure
 	dbw EFFECT_ROLLOUT,          AI_Smart_Rollout
 	dbw EFFECT_SWAGGER,          AI_Smart_Swagger
-	dbw EFFECT_FURY_CUTTER,      AI_Smart_FuryCutter
+	dbw EFFECT_U_TURN,           AI_Smart_UTurn
 	dbw EFFECT_ATTRACT,          AI_Smart_Attract
 	dbw EFFECT_SAFEGUARD,        AI_Smart_Safeguard
 	dbw EFFECT_MAGNITUDE,        AI_Smart_Magnitude
@@ -656,11 +656,7 @@ AI_Smart_EvasionUp:
 	cp b
 	jr c, .discourage
 
-; Greatly encourage this move if the player is in the middle of Fury Cutter or Rollout.
-	ld a, [wPlayerFuryCutterCount]
-	and a
-	jr nz, .greatly_encourage
-
+; Greatly encourage this move if the player is in the middle of Rollout.
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .greatly_encourage
@@ -823,11 +819,7 @@ AI_Smart_AccuracyDown:
 	cp b
 	jr c, .discourage
 
-; Greatly encourage this move if the player is in the middle of Fury Cutter or Rollout.
-	ld a, [wPlayerFuryCutterCount]
-	and a
-	jr nz, .greatly_encourage
-
+; Greatly encourage this move if the player is in the middle of Rollout.
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .greatly_encourage
@@ -1809,11 +1801,6 @@ AI_Smart_Protect:
 	and a
 	jr nz, .greatly_discourage
 
-; Encourage this move if the player's Fury Cutter is boosted enough.
-	ld a, [wPlayerFuryCutterCount]
-	cp 3
-	jr nc, .encourage
-
 ; Encourage this move if the player has charged a two-turn move.
 	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_CHARGED, a
@@ -2014,29 +2001,48 @@ AI_Smart_Endure:
 	inc [hl]
 	ret
 
-AI_Smart_FuryCutter:
-; Encourage this move based on Fury Cutter's count.
+AI_Smart_UTurn:
+; Encourage U-turn when switching would be beneficial.
 
-	ld a, [wEnemyFuryCutterCount]
-	and a
-	jr z, AI_Smart_Rollout
-	dec [hl]
+	; No switching bonus without another healthy Pokemon.
+	push hl
+	farcall CheckAnyOtherAliveEnemyMons
+	pop hl
+	ret z
 
-	cp 2
-	jr c, AI_Smart_Rollout
-	dec [hl]
-	dec [hl]
+	; Discourage switching away after significant stat boosts.
+	ld a, [wEnemyAtkLevel]
+	cp BASE_STAT_LEVEL + 2
+	jr nc, .discourage
 
-	cp 3
-	jr c, AI_Smart_Rollout
-	dec [hl]
-	dec [hl]
-	dec [hl]
+	ld a, [wEnemySAtkLevel]
+	cp BASE_STAT_LEVEL + 2
+	jr nc, .discourage
 
-	; fallthrough
+	; Favor switching out of an unfavorable matchup.
+	push hl
+	callfar CheckPlayerMoveTypeMatchups
+	ld a, [wEnemyAISwitchScore]
+	cp BASE_AI_SWITCH_SCORE
+	pop hl
+	jr c, .encourage
+
+	; Favor pivoting when HP is at or below half.
+	call AICheckEnemyHalfHP
+	ret c
+
+.encourage
+	dec [hl]
+	dec [hl]
+	ret
+
+.discourage
+	inc [hl]
+	inc [hl]
+	ret
 
 AI_Smart_Rollout:
-; Rollout, Fury Cutter
+; Rollout
 
 ; 80% chance to discourage this move if the enemy is in love, confused, or paralyzed.
 	ld a, [wEnemySubStatus1]

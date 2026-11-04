@@ -176,7 +176,7 @@ Moves:
 	move CONVERSION,   EFFECT_CONVERSION,          0, NORMAL,       STATUS,   100, 30,   0
 	move TRI_ATTACK,   EFFECT_TRI_ATTACK,         80, NORMAL,       SPECIAL,  100, 10,  20
 	move SUPER_FANG,   EFFECT_SUPER_FANG,          1, NORMAL,       PHYSICAL,  90, 10,   0
-	move SLASH,        EFFECT_NORMAL_HIT,         70, NORMAL,       PHYSICAL, 100, 20,   0
+	move SLASH,        EFFECT_NORMAL_HIT,         80, NORMAL,       PHYSICAL, 100, 20,   0
 	move SUBSTITUTE,   EFFECT_SUBSTITUTE,          0, NORMAL,       STATUS,   100, 10,   0
 	move STRUGGLE,     EFFECT_RECOIL_HIT,         50, NORMAL,       PHYSICAL, 100,  1,   0
 	move SKETCH,       EFFECT_SKETCH,              0, NORMAL,       STATUS,   100,  1,   0
@@ -223,7 +223,7 @@ Moves:
 	move SWAGGER,      EFFECT_SWAGGER,             0, NORMAL,       STATUS,    90, 15, 100
 	move MILK_DRINK,   EFFECT_HEAL,                0, NORMAL,       STATUS,   100, 10,   0
 	move SPARK,        EFFECT_PARALYZE_HIT,       65, ELECTRIC,     PHYSICAL, 100, 15,  50
-	move FURY_CUTTER,  EFFECT_FURY_CUTTER,        10, BUG,          PHYSICAL,  95, 20,   0
+	move U_TURN,       EFFECT_U_TURN,             70, BUG,          PHYSICAL, 100, 20,   0
 	move STEEL_WING,   EFFECT_DEFENSE_UP_HIT,     70, STEEL,        PHYSICAL,  90, 25,  10
 	move MEAN_LOOK,    EFFECT_MEAN_LOOK,           0, NORMAL,       STATUS,   100,  5,   0
 	move ATTRACT,      EFFECT_ATTRACT,             0, NORMAL,       STATUS,   100, 15,   0

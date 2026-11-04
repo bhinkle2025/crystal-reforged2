@@ -680,13 +680,6 @@ ParsePlayerAction:
 	xor a
 	ld [wPlayerCharging], a
 	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
-	cp EFFECT_FURY_CUTTER
-	jr z, .continue_fury_cutter
-	xor a
-	ld [wPlayerFuryCutterCount], a
-
-.continue_fury_cutter
-	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
 	cp EFFECT_RAGE
 	jr z, .continue_rage
 	ld hl, wPlayerSubStatus4
@@ -710,7 +703,6 @@ ParsePlayerAction:
 
 .locked_in
 	xor a
-	ld [wPlayerFuryCutterCount], a
 	ld [wPlayerProtectCount], a
 	ld [wPlayerRageCounter], a
 	ld hl, wPlayerSubStatus4
@@ -723,7 +715,6 @@ ParsePlayerAction:
 
 .reset_rage
 	xor a
-	ld [wPlayerFuryCutterCount], a
 	ld [wPlayerProtectCount], a
 	ld [wPlayerRageCounter], a
 	ld hl, wPlayerSubStatus4
@@ -859,7 +850,7 @@ CompareMovePriority:
 	ret
 
 GetMovePriority:
-; Return the priority (0-3) of move a.
+; Return the priority (0-4) of move a.
 
 	ld b, a
 
@@ -3578,6 +3569,27 @@ endr
 	res SUBSTATUS_CANT_RUN, [hl]
 	ret
 
+; Normal player switch-in after U-turn
+UTurn_PlayerEntrance:
+	ld c, 50
+	call DelayFrames
+	hlcoord 9, 7
+	lb bc, 5, 11
+	call ClearBox
+	jp PlayerPartyMonEntrance
+
+; Normal enemy switch-in after U-turn
+UTurn_EnemyEntrance:
+	call NewEnemyMonStatus
+	call ResetEnemyStatLevels
+	call BreakAttraction
+	xor a
+	ld [wEnemySwitchMonIndex], a
+	call EnemySwitch_SetMode
+	call ResetBattleParticipants
+	call SetEnemyTurn
+	jp SpikesDamage
+
 ResetEnemyStatLevels:
 	ld a, BASE_STAT_LEVEL
 	ld b, NUM_LEVEL_STATS
@@ -5875,13 +5887,6 @@ ParseEnemyAction:
 
 .raging
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_FURY_CUTTER
-	jr z, .fury_cutter
-	xor a
-	ld [wEnemyFuryCutterCount], a
-
-.fury_cutter
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_RAGE
 	jr z, .no_rage
 	ld hl, wEnemySubStatus4
@@ -5905,7 +5910,6 @@ ParseEnemyAction:
 
 ResetVarsForSubstatusRage:
 	xor a
-	ld [wEnemyFuryCutterCount], a
 	ld [wEnemyProtectCount], a
 	ld [wEnemyRageCounter], a
 	ld hl, wEnemySubStatus4

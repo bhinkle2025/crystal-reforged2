@@ -2886,6 +2886,7 @@ HoppipEvosAttacks:
 	db 22, MEGA_DRAIN
 	db 24, ACROBATICS
 	db 25, COTTON_SPORE
+	db 29, U_TURN
 	db 32, GIGA_DRAIN
 	db 0 ; no more level-up moves
 
@@ -2906,6 +2907,7 @@ SkiploomEvosAttacks:
 	db 22, MEGA_DRAIN
 	db 24, ACROBATICS
 	db 25, COTTON_SPORE
+	db 29, U_TURN
 	db 32, GIGA_DRAIN
 	db 0 ; no more level-up moves
 
@@ -2925,6 +2927,7 @@ JumpluffEvosAttacks:
 	db 22, MEGA_DRAIN
 	db 24, ACROBATICS
 	db 25, COTTON_SPORE
+	db 29, U_TURN
 	db 32, GIGA_DRAIN
 	db 0 ; no more level-up moves
 
@@ -3181,6 +3184,7 @@ GligarEvosAttacks:
 	db 22, ACROBATICS
 	db 27, SLASH
 	db 28, DIG
+	db 30, U_TURN
 	db 35, SCREECH
 	db 40, CRABHAMMER
 	db 45, EARTHQUAKE

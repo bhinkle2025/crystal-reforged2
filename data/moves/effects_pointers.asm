@@ -120,7 +120,7 @@ MoveEffectsPointers:
 	dw Endure
 	dw Rollout
 	dw Swagger
-	dw FuryCutter
+	dw UTurn
 	dw Attract
 	dw Return
 	dw Present

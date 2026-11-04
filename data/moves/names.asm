@@ -209,7 +209,7 @@ MoveNames::
 	li "SWAGGER"
 	li "MILK DRINK"
 	li "SPARK"
-	li "FURY CUTTER"
+	li "U-TURN"
 	li "STEEL WING"
 	li "MEAN LOOK"
 	li "ATTRACT"

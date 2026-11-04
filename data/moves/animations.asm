@@ -211,7 +211,7 @@ BattleAnimations::
 	dw BattleAnim_Swagger
 	dw BattleAnim_MilkDrink
 	dw BattleAnim_Spark
-	dw BattleAnim_FuryCutter
+	dw BattleAnim_UTurn
 	dw BattleAnim_SteelWing
 	dw BattleAnim_MeanLook
 	dw BattleAnim_Attract
@@ -2745,6 +2745,7 @@ BattleAnim_SwordsDance:
 	anim_wait 56
 	anim_ret
 
+BattleAnim_UTurn:
 BattleAnim_QuickAttack:
 	anim_2gfx BATTLE_ANIM_GFX_SPEED, BATTLE_ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_MENU
@@ -3728,21 +3729,6 @@ BattleAnim_Spark:
 	anim_obj BATTLE_ANIM_OBJ_THUNDERBOLT_BALL, 136, 56, $2
 	anim_obj BATTLE_ANIM_OBJ_SPARKS_CIRCLE, 136, 56, $0
 	anim_wait 32
-	anim_ret
-
-BattleAnim_FuryCutter:
-	anim_1gfx BATTLE_ANIM_GFX_CUT
-.loop
-	anim_sound 0, 1, SFX_CUT
-	anim_if_param_and %00000001, .obj1
-	anim_obj BATTLE_ANIM_OBJ_CUT_LONG_DOWN_LEFT, 152, 40, $0
-	anim_jump .okay
-
-.obj1
-	anim_obj BATTLE_ANIM_OBJ_CUT_LONG_DOWN_RIGHT, 112, 40, $0
-.okay
-	anim_wait 16
-	anim_jumpuntil .loop
 	anim_ret
 
 BattleAnim_SteelWing:

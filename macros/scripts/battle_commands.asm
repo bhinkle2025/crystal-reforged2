@@ -98,7 +98,7 @@ ENDM
 	command checkcurl               ; 5b
 	command rolloutpower            ; 5c
 	command growth                  ; 5d
-	command furycutter              ; 5e
+	command uturn                   ; 5e
 	command attract                 ; 5f
 	command happinesspower          ; 60
 	command present                 ; 61

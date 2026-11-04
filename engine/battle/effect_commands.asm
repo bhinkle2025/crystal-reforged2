@@ -341,8 +341,6 @@ CantMove:
 	and ~(1 << SUBSTATUS_BIDE | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED)
 	ld [hl], a
 
-	call ResetFuryCutterCount
-
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp FLY
@@ -6384,7 +6382,7 @@ BattleCommand_Unused5D:
 ; effect0x5d
 	ret
 
-INCLUDE "engine/battle/move_effects/fury_cutter.asm"
+INCLUDE "engine/battle/move_effects/u_turn.asm"
 
 INCLUDE "engine/battle/move_effects/attract.asm"
 

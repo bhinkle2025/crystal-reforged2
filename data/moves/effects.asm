@@ -1634,7 +1634,7 @@ Swagger:
 	confusetarget
 	endmove
 
-FuryCutter:
+UTurn:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1642,14 +1642,14 @@ FuryCutter:
 	damagestats
 	damagecalc
 	stab
-	checkhit
-	furycutter
 	damagevariation
+	checkhit
 	moveanim
 	failuretext
 	applydamage
 	criticaltext
 	supereffectivetext
+	uturn
 	checkfaint
 	buildopponentrage
 	kingsrock

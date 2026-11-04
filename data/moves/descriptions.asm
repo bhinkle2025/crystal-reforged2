@@ -210,7 +210,7 @@ MoveDescriptions::
 	dw SwaggerDescription
 	dw MilkDrinkDescription
 	dw SparkDescription
-	dw FuryCutterDescription
+	dw UTurnDescription
 	dw SteelWingDescription
 	dw MeanLookDescription
 	dw AttractDescription
@@ -1103,9 +1103,9 @@ SparkDescription:
 	db   "An attack that may"
 	next "cause paralysis.@"
 
-FuryCutterDescription:
-	db   "Successive hits"
-	next "raise power.@"
+UTurnDescription:
+	db   "Attacks, then"
+	next "switches out.@"
 
 SteelWingDescription:
 	db   "Stiff wings strike"
