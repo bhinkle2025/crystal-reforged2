@@ -223,7 +223,7 @@ MoveDescriptions::
 	dw PainSplitDescription
 	dw SacredFireDescription
 	dw MagnitudeDescription
-	dw DynamicpunchDescription
+	dw DrainPunchDescription
 	dw MegahornDescription
 	dw DragonbreathDescription
 	dw BatonPassDescription
@@ -1155,9 +1155,9 @@ MagnitudeDescription:
 	db   "A ground attack"
 	next "with random power.@"
 
-DynamicpunchDescription:
-	db   "An attack that"
-	next "always confuses.@"
+DrainPunchDescription:
+	db   "A draining punch"
+	next "restores HP.@"
 
 MegahornDescription:
 	db   "A powerful charge"

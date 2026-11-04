@@ -228,7 +228,7 @@
 	const PAIN_SPLIT   ; dc
 	const SACRED_FIRE  ; dd
 	const MAGNITUDE    ; de
-	const DYNAMICPUNCH ; df
+	const DRAIN_PUNCH  ; df
 	const MEGAHORN     ; e0
 	const DRAGONBREATH ; e1
 	const BATON_PASS   ; e2
