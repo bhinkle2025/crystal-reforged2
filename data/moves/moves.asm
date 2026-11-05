@@ -165,7 +165,7 @@ Moves:
 	move MOONBLAST,    EFFECT_SP_ATK_DOWN_HIT,    95, FAIRY,        SPECIAL,  100, 15,   0
 	move SPLASH,       EFFECT_SPLASH,              0, NORMAL,       STATUS,   100, 40,   0
 	move ACID_ARMOR,   EFFECT_DEFENSE_UP_2,        0, POISON,       STATUS,   100, 40,   0
-	move CRABHAMMER,   EFFECT_NORMAL_HIT,        100, WATER,        PHYSICAL,  90, 10,   0
+	move CRABHAMMER,   EFFECT_NORMAL_HIT,        100, WATER,        PHYSICAL,  95, 10,   0
 	move EXPLOSION,    EFFECT_SELFDESTRUCT,      250, NORMAL,       PHYSICAL, 100,  5,   0
 	move FURY_SWIPES,  EFFECT_MULTI_HIT,          18, NORMAL,       PHYSICAL,  80, 15,   0
 	move BONEMERANG,   EFFECT_DOUBLE_HIT,         50, GROUND,       PHYSICAL,  90, 10,   0
@@ -224,7 +224,7 @@ Moves:
 	move MILK_DRINK,   EFFECT_HEAL,                0, NORMAL,       STATUS,   100,  5,   0
 	move SPARK,        EFFECT_PARALYZE_HIT,       65, ELECTRIC,     PHYSICAL, 100, 15,  50
 	move U_TURN,       EFFECT_U_TURN,             70, BUG,          PHYSICAL, 100, 20,   0
-	move STEEL_WING,   EFFECT_DEFENSE_UP_HIT,     70, STEEL,        PHYSICAL,  90, 25,  10
+	move STEEL_WING,   EFFECT_DEFENSE_UP_HIT,     80, STEEL,        PHYSICAL,  95, 25,  30
 	move MEAN_LOOK,    EFFECT_MEAN_LOOK,           0, NORMAL,       STATUS,   100,  5,   0
 	move ATTRACT,      EFFECT_ATTRACT,             0, NORMAL,       STATUS,   100, 15,   0
 	move SLEEP_TALK,   EFFECT_SLEEP_TALK,          0, NORMAL,       STATUS,   100, 10,   0
@@ -244,7 +244,7 @@ Moves:
 	move PURSUIT,      EFFECT_PURSUIT,            65, DARK,         PHYSICAL, 100, 20,   0
 	move RAPID_SPIN,   EFFECT_RAPID_SPIN,         50, NORMAL,       PHYSICAL, 100, 40, 100
 	move SWEET_SCENT,  EFFECT_EVASION_DOWN,        0, NORMAL,       STATUS,   100, 20,   0
-	move IRON_TAIL,    EFFECT_DEFENSE_DOWN_HIT,  100, STEEL,        PHYSICAL,  90, 15,  30
+	move IRON_TAIL,    EFFECT_DEFENSE_DOWN_HIT,  110, STEEL,        PHYSICAL,  75, 10,  30
 	move METAL_CLAW,   EFFECT_ATTACK_UP_HIT,      60, STEEL,        PHYSICAL, 100, 35,  50
 	move VITAL_THROW,  EFFECT_ALWAYS_HIT,         75, FIGHTING,     PHYSICAL, 100, 10,   0
 	move MORNING_SUN,  EFFECT_MORNING_SUN,         0, NORMAL,       STATUS,   100,  5,   0

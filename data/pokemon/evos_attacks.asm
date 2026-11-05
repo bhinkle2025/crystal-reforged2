@@ -2386,11 +2386,14 @@ CyndaquilEvosAttacks:
 	db 6, EMBER
 	db 10, SMOKESCREEN
 	db 13, QUICK_ATTACK
+	db 16, DIG
 	db 19, FLAME_WHEEL
 	db 22, DEFENSE_CURL
-	db 28, ROLLOUT
-	db 31, SWIFT
-	db 37, FLAMETHROWER
+	db 25, ROLLOUT
+	db 28, SWIFT
+	db 31, FLAMETHROWER
+	db 37, ROLLOUT
+	db 40, FIRE_BLAST
 	db 0 ; no more level-up moves
 
 QuilavaEvosAttacks:
@@ -2398,28 +2401,34 @@ QuilavaEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, LEER
-	db 6, SMOKESCREEN
-	db 10, EMBER
+	db 6, EMBER
+	db 10, SMOKESCREEN
 	db 13, QUICK_ATTACK
+	db 16, DIG
 	db 19, FLAME_WHEEL
 	db 22, DEFENSE_CURL
-	db 28, ROLLOUT
-	db 31, SWIFT
-	db 37, FLAMETHROWER
+	db 25, ROLLOUT
+	db 28, SWIFT
+	db 31, FLAMETHROWER
+	db 37, ROLLOUT
+	db 40, FIRE_BLAST
 	db 0 ; no more level-up moves
 
 TyphlosionEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, LEER
-	db 6, SMOKESCREEN
-	db 10, EMBER
+	db 6, EMBER
+	db 10, SMOKESCREEN
 	db 13, QUICK_ATTACK
+	db 16, DIG
 	db 19, FLAME_WHEEL
 	db 22, DEFENSE_CURL
-	db 28, ROLLOUT
-	db 31, SWIFT
-	db 37, FLAMETHROWER
+	db 25, ROLLOUT
+	db 28, SWIFT
+	db 31, FLAMETHROWER
+	db 37, ROLLOUT
+	db 40, FIRE_BLAST
 	db 0 ; no more level-up moves
 
 TotodileEvosAttacks:
@@ -2432,12 +2441,12 @@ TotodileEvosAttacks:
 	db 13, BITE
 	db 15, SCARY_FACE
 	db 20, ANCIENTPOWER
+	db 23, SCREECH
 	db 27, CRUNCH
-	db 34, SLASH
-	db 36, SCREECH
-	db 41, THRASH
-	db 48, SUBMISSION
-	db 50, HYDRO_PUMP
+	db 31, SLASH
+	db 34, THRASH
+	db 37, SUBMISSION
+	db 40, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
 CroconawEvosAttacks:
@@ -2445,38 +2454,34 @@ CroconawEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
-	db 1, WATER_GUN
-	db 1, RAGE
 	db 6, WATER_GUN
 	db 8, RAGE
 	db 13, BITE
 	db 15, SCARY_FACE
 	db 20, ANCIENTPOWER
+	db 23, SCREECH
 	db 27, CRUNCH
-	db 34, SLASH
-	db 36, SCREECH
-	db 41, THRASH
-	db 48, SUBMISSION
-	db 50, HYDRO_PUMP
+	db 31, SLASH
+	db 34, THRASH
+	db 37, SUBMISSION
+	db 40, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
 FeraligatrEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
-	db 1, WATER_GUN
-	db 1, RAGE
 	db 6, WATER_GUN
 	db 8, RAGE
 	db 13, BITE
 	db 15, SCARY_FACE
 	db 20, ANCIENTPOWER
+	db 23, SCREECH
 	db 27, CRUNCH
-	db 34, SLASH
-	db 36, SCREECH
-	db 41, THRASH
-	db 48, SUBMISSION
-	db 50, HYDRO_PUMP
+	db 31, SLASH
+	db 34, THRASH
+	db 37, SUBMISSION
+	db 40, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
 SentretEvosAttacks:
@@ -3388,12 +3393,14 @@ SwinubEvosAttacks:
 	db 1, MUD_SLAP
 	db 5, POWDER_SNOW
 	db 14, ENDURE
+	db 18, FLAIL
 	db 20, MIST
 	db 25, DIG
+	db 28, DOUBLE_EDGE
 	db 30, ICY_WIND
 	db 35, AMNESIA
 	db 37, EARTHQUAKE
-	db 40, FLAIL
+	db 40, THRASH
 	db 46, BLIZZARD
 	db 0 ; no more level-up moves
 
@@ -3403,12 +3410,14 @@ PiloswineEvosAttacks:
 	db 1, MUD_SLAP
 	db 5, POWDER_SNOW
 	db 14, ENDURE
+	db 18, FLAIL
 	db 20, MIST
 	db 25, DIG
+	db 28, DOUBLE_EDGE
 	db 30, ICY_WIND
 	db 35, AMNESIA
 	db 37, EARTHQUAKE
-	db 40, FLAIL
+	db 40, THRASH
 	db 46, BLIZZARD
 	db 0 ; no more level-up moves
 
@@ -3486,10 +3495,11 @@ SkarmoryEvosAttacks:
 	db 23, SWIFT
 	db 25, AGILITY
 	db 28, SPIKES
-	db 34, STEEL_WING
-	db 36, DRILL_PECK
+	db 31, WHIRLWIND
+	db 32, STEEL_WING
+	db 35, DRILL_PECK
 	db 39, SLASH
-	db 45, AIR_SLASH
+	db 42, AIR_SLASH
 	db 0 ; no more level-up moves
 
 HoundourEvosAttacks:
