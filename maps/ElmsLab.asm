@@ -925,6 +925,66 @@ HardModeDisabledText:
 	line "disabled!"
 	done
 
+ElmsLabFriendshipEndureBookshelf:
+	opentext
+	checkevent EVENT_FRIENDSHIP_ENDURE
+	iftrue .Disable
+
+	writetext FriendshipEndureEnableText
+	yesorno
+	iffalse .Cancel
+	setevent EVENT_FRIENDSHIP_ENDURE
+	writetext FriendshipEndureEnabledText
+	sjump .Finish
+
+.Disable:
+	writetext FriendshipEndureDisableText
+	yesorno
+	iffalse .Cancel
+	clearevent EVENT_FRIENDSHIP_ENDURE
+	writetext FriendshipEndureDisabledText
+
+.Finish:
+	waitbutton
+.Cancel:
+	closetext
+	end
+
+FriendshipEndureEnableText:
+	text "It's a book about"
+	line "friendship."
+
+	para "FRIENDSHIP ENDURE"
+
+	para "Loyal #MON may"
+	line "survive a fatal"
+	cont "hit with 1 HP."
+
+	para "Higher friendship"
+	line "improves the odds."
+
+	para "Enable this"
+	line "feature?"
+	done
+
+FriendshipEndureEnabledText:
+	text "FRIENDSHIP ENDURE"
+	line "enabled!"
+	done
+
+FriendshipEndureDisableText:
+	text "It's a book about"
+	line "friendship."
+
+	para "Disable"
+	line "FRIENDSHIP ENDURE?"
+	done
+
+FriendshipEndureDisabledText:
+	text "FRIENDSHIP ENDURE"
+	line "disabled!"
+	done
+
 ElmText_Intro:
 	text "ELM: <PLAY_G>!"
 	line "There you are!"
@@ -1665,7 +1725,7 @@ ElmsLab_MapEvents:
 	bg_event  2,  7, BGEVENT_READ, ElmsLabTravelTip3
 	bg_event  3,  7, BGEVENT_READ, ElmsLabTravelTip4
 	bg_event  6,  7, BGEVENT_READ, ElmsLabHardModeBookshelf
-	bg_event  7,  7, BGEVENT_READ, ElmsLabBookshelf
+	bg_event  7,  7, BGEVENT_READ, ElmsLabFriendshipEndureBookshelf
 	bg_event  8,  7, BGEVENT_READ, ElmsLabBookshelf
 	bg_event  9,  7, BGEVENT_READ, ElmsLabBookshelf
 	bg_event  9,  3, BGEVENT_READ, ElmsLabTrashcan

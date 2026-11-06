@@ -1465,6 +1465,7 @@
 	const EVENT_CAN_TAKE_FINAL_STARTER
 	const EVENT_HARD_MODE
 	const EVENT_GOT_LINKING_CORD
+	const EVENT_FRIENDSHIP_ENDURE
 ; Unused: next 47 events
 
 	const_next 2048
