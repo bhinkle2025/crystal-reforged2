@@ -363,15 +363,18 @@ NationalParkYoungster2Text:
 	cont "sticker if I win."
 	done
 
+
 NationalParkTeacher2Text:
-	text "I take walks in"
-	line "the PARK, but I"
+	text "I heard a rumor"
+	line "about a secret"
 
-	para "never go into the"
-	line "grass."
+	para "password that"
+	line "changes your"
 
-	para "Trainers always"
-	line "want to battle…"
+	para "starting #MON!"
+	
+	para "The password"
+	line "is WILD!"
 	done
 
 NationalParkPersianText:

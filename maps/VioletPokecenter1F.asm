@@ -77,27 +77,7 @@ VioletPokecenter1F_ElmsAideScript:
 	sjump .AskTakeEgg
 
 VioletPokecenter1FGameboyKidScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_LINKING_CORD
-	iftrue .AlreadyReceived
-	writetext LinkingCordGiftText
-	promptbutton
-	verbosegiveitem LINKING_CORD
-	iffalse .NoRoom
-	setevent EVENT_GOT_LINKING_CORD
-
-.AlreadyReceived:
-	writetext VioletPokecenter1FGameboyKidText
-	waitbutton
-	closetext
-	end
-
-.NoRoom:
-	writetext LinkingCordNoRoomText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer VioletPokecenter1FGameboyKidText
 
 VioletPokecenter1FGentlemanScript:
 	jumptextfaceplayer VioletPokecenter1FGentlemanText
@@ -177,28 +157,23 @@ VioletPokecenterElmsAideAskEggText:
 	line "take the EGG?"
 	done
 
-LinkingCordGiftText:
-	text "This LINKING CORD"
-	line "can help certain"
-	cont "#MON evolve!"
-
-	para "Here, take it!"
-	done
 
 VioletPokecenter1FGameboyKidText:
-	text "That LINKING CORD"
-	line "I gave you lets"
+	text "Psst! Hey, you!"
 
-	para "certain #MON"
-	line "evolve without"
-	cont "having to trade!"
-	done
+	para "I heard there's"
+	line "a secret password"
 
-LinkingCordNoRoomText:
-	text "Your PACK is full!"
+	para "that changes your"
+	line "starter #MON!"
 
-	para "Come back when"
-	line "you've made room!"
+	para "Wanna know what"
+	line "it is?"
+
+	para "It's TRADE!"
+
+	para "Try it when you"
+	line "start a new game!"
 	done
 
 VioletPokecenter1FGentlemanText:

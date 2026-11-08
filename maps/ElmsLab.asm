@@ -92,6 +92,12 @@ ProfElmScript:
 	faceplayer
 	opentext
 
+	; Disable bonus starter if TRADE or WILD password was used
+	checkevent EVENT_PASSWORD_TRADE
+	iftrue .AfterFinalStarterCheck
+	checkevent EVENT_PASSWORD_WILD
+	iftrue .AfterFinalStarterCheck
+
 	readvar VAR_DEXCAUGHT
 	ifgreater 50, .GiveFinalStarter
 	sjump .AfterFinalStarterCheck
@@ -181,6 +187,10 @@ CyndaquilPokeBallScript:
 
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
+	checkevent EVENT_PASSWORD_TRADE
+	iftrue GeodudePokeBallScript
+	checkevent EVENT_PASSWORD_WILD
+	iftrue TeddiursaPokeBallScript
 	pokepic CYNDAQUIL
 	cry CYNDAQUIL
 	waitbutton
@@ -229,6 +239,58 @@ CyndaquilPokeBallScript:
 	closetext
 	end
 
+GeodudePokeBallScript:
+	pokepic GEODUDE
+	cry GEODUDE
+	waitbutton
+	closepokepic
+	opentext
+	writetext TakeGeodudeText
+	yesorno
+	iffalse DidntChooseStarterScript
+	disappear ELMSLAB_POKE_BALL1
+	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	writetext ChoseStarterText
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, GEODUDE
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	givepoke GEODUDE, 5, BERRY
+	closetext
+	readvar VAR_FACING
+	ifequal RIGHT, ElmDirectionsScript
+	applymovement PLAYER, AfterCyndaquilMovement
+	sjump ElmDirectionsScript
+
+TeddiursaPokeBallScript:
+	pokepic TEDDIURSA
+	cry TEDDIURSA
+	waitbutton
+	closepokepic
+	opentext
+	writetext TakeTeddiursaText
+	yesorno
+	iffalse DidntChooseStarterScript
+	disappear ELMSLAB_POKE_BALL1
+	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	writetext ChoseStarterText
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, GEODUDE
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	givepoke TEDDIURSA, 5, BERRY
+	closetext
+	readvar VAR_FACING
+	ifequal RIGHT, ElmDirectionsScript
+	applymovement PLAYER, AfterCyndaquilMovement
+	sjump ElmDirectionsScript
+
 TotodilePokeBallScript:
 	checkevent EVENT_CAN_TAKE_FINAL_STARTER
 	iftrue .FinalStarter
@@ -239,6 +301,10 @@ TotodilePokeBallScript:
 
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
+	checkevent EVENT_PASSWORD_TRADE
+	iftrue MachopPokeBallScript
+	checkevent EVENT_PASSWORD_WILD
+	iftrue PhanpyPokeBallScript
 	pokepic TOTODILE
 	cry TOTODILE
 	waitbutton
@@ -285,6 +351,58 @@ TotodilePokeBallScript:
 	closetext
 	end
 
+MachopPokeBallScript:
+	pokepic MACHOP
+	cry MACHOP
+	waitbutton
+	closepokepic
+	opentext
+	writetext TakeMachopText
+	yesorno
+	iffalse DidntChooseStarterScript
+	disappear ELMSLAB_POKE_BALL2
+	setevent EVENT_GOT_TOTODILE_FROM_ELM
+	writetext ChoseStarterText
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, MACHOP
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	givepoke MACHOP, 5, BERRY
+	closetext
+	readvar VAR_FACING
+	ifequal RIGHT, ElmDirectionsScript
+	applymovement PLAYER, AfterTotodileMovement
+	sjump ElmDirectionsScript
+
+PhanpyPokeBallScript:
+	pokepic PHANPY
+	cry PHANPY
+	waitbutton
+	closepokepic
+	opentext
+	writetext TakePhanpyText
+	yesorno
+	iffalse DidntChooseStarterScript
+	disappear ELMSLAB_POKE_BALL2
+	setevent EVENT_GOT_TOTODILE_FROM_ELM
+	writetext ChoseStarterText
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, PHANPY
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	givepoke PHANPY, 5, BERRY
+	closetext
+	readvar VAR_FACING
+	ifequal RIGHT, ElmDirectionsScript
+	applymovement PLAYER, AfterTotodileMovement
+	sjump ElmDirectionsScript
+
 ChikoritaPokeBallScript:
 	checkevent EVENT_CAN_TAKE_FINAL_STARTER
 	iftrue .FinalStarter
@@ -295,6 +413,10 @@ ChikoritaPokeBallScript:
 
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
+	checkevent EVENT_PASSWORD_TRADE
+	iftrue GastlyPokeBallScript
+	checkevent EVENT_PASSWORD_WILD
+	iftrue SwinubPokeBallScript
 	pokepic CHIKORITA
 	cry CHIKORITA
 	waitbutton
@@ -340,6 +462,58 @@ ChikoritaPokeBallScript:
 	givepoke CHIKORITA, 5, BERRY
 	closetext
 	end
+
+GastlyPokeBallScript:
+	pokepic GASTLY
+	cry GASTLY
+	waitbutton
+	closepokepic
+	opentext
+	writetext TakeGastlyText
+	yesorno
+	iffalse DidntChooseStarterScript
+	disappear ELMSLAB_POKE_BALL3
+	setevent EVENT_GOT_CHIKORITA_FROM_ELM
+	writetext ChoseStarterText
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, GASTLY
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	givepoke GASTLY, 5, BERRY
+	closetext
+	readvar VAR_FACING
+	ifequal RIGHT, ElmDirectionsScript
+	applymovement PLAYER, AfterChikoritaMovement
+	sjump ElmDirectionsScript
+
+SwinubPokeBallScript:
+	pokepic SWINUB
+	cry SWINUB
+	waitbutton
+	closepokepic
+	opentext
+	writetext TakeSwinubText
+	yesorno
+	iffalse DidntChooseStarterScript
+	disappear ELMSLAB_POKE_BALL3
+	setevent EVENT_GOT_CHIKORITA_FROM_ELM
+	writetext ChoseStarterText
+	promptbutton
+	waitsfx
+	getmonname STRING_BUFFER_3, SWINUB
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	givepoke SWINUB, 5, BERRY
+	closetext
+	readvar VAR_FACING
+	ifequal RIGHT, ElmDirectionsScript
+	applymovement PLAYER, AfterChikoritaMovement
+	sjump ElmDirectionsScript
 
 DidntChooseStarterScript:
 	writetext DidntChooseStarterText
@@ -1124,16 +1298,52 @@ TakeCyndaquilText:
 	cont "fire #MON?"
 	done
 
+TakeGeodudeText:
+	text "ELM: You'll take"
+	line "GEODUDE, the"
+	cont "rock #MON?"
+	done
+
+TakeTeddiursaText:
+	text "ELM: You'll take"
+	line "TEDDIURSA, the"
+	cont "bear #MON?"
+	done
+
 TakeTotodileText:
 	text "ELM: Do you want"
 	line "TOTODILE, the"
 	cont "water #MON?"
 	done
 
+TakeMachopText:
+	text "ELM: You'll take"
+	line "MACHOP, the"
+	cont "fighting #MON?"
+	done
+
+TakePhanpyText:
+	text "ELM: You'll take"
+	line "PHANPY, the"
+	cont "elephant #MON?"
+	done
+
 TakeChikoritaText:
 	text "ELM: So, you like"
 	line "CHIKORITA, the"
 	cont "grass #MON?"
+	done
+
+TakeGastlyText:
+	text "ELM: You'll take"
+	line "GASTLY, the"
+	cont "ghost #MON?"
+	done
+
+TakeSwinubText:
+	text "ELM: You'll take"
+	line "SWINUB, the"
+	cont "boar #MON?"
 	done
 
 DidntChooseStarterText:

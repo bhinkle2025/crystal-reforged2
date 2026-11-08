@@ -78,7 +78,27 @@ GoldenrodPokecenter1F_GSBallSceneRight:
 	end
 
 GoldenrodPokecenter1FGameboyKidScript:
-	jumptextfaceplayer GoldenrodPokecenter1FGameboyKidText
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_LINKING_CORD
+	iftrue .AlreadyReceived
+	writetext LinkingCordGiftText
+	promptbutton
+	verbosegiveitem LINKING_CORD
+	iffalse .NoRoom
+	setevent EVENT_GOT_LINKING_CORD
+
+.AlreadyReceived:
+	writetext GoldenrodPokecenter1FGameboyKidText
+	waitbutton
+	closetext
+	end
+
+.NoRoom:
+	writetext LinkingCordNoRoomText
+	waitbutton
+	closetext
+	end
 
 GoldenrodPokecenter1FLassScript:
 	jumptextfaceplayer GoldenrodPokecenter1FLassText
@@ -168,30 +188,28 @@ GoldenrodPokecomCenterWeMustHoldYourMonText: ; unreferenced
 	line "trade?"
 	done
 
-GoldenrodPokecomCenterWhatMonDoYouWantText: ; unreferenced
-	text "What kind of"
-	line "#MON do you"
-	cont "want in return?"
+LinkingCordGiftText:
+	text "This LINKING CORD"
+	line "can help certain"
+	cont "#MON evolve!"
+
+	para "Here, take it!"
 	done
 
-GoldenrodPokecomCenterWeWillTradeYourMonForMonText: ; unreferenced
-	text "Fine. We will try"
-	line "to trade your"
+GoldenrodPokecenter1FGameboyKidText:
+	text "That LINKING CORD"
+	line "I gave you lets"
 
-	para "@"
-	text_ram wStringBuffer3
-	text " for"
-	line "@"
-	text_ram wStringBuffer4
-	text "."
+	para "certain #MON"
+	line "evolve without"
+	cont "having to trade!"
+	done
 
-	para "We'll have to hold"
-	line "your #MON"
-	cont "during the trade."
+LinkingCordNoRoomText:
+	text "Your PACK is full!"
 
-	para "Please wait while"
-	line "we prepare the"
-	cont "room for it."
+	para "Come back when"
+	line "you've made room!"
 	done
 
 GoldenrodPokecomCenterWeWillTradeYourMonForNewText: ; unreferenced
@@ -658,18 +676,6 @@ GoldenrodPokecomCenterPerson11Text: ; unreferenced
 	para "I wonder how I"
 	line "could get in the"
 	cont "NEWS?"
-	done
-
-GoldenrodPokecenter1FGameboyKidText:
-	text "The COLOSSEUM"
-	line "upstairs is for"
-	cont "link battles."
-
-	para "Battle records are"
-	line "posted on the"
-
-	para "wall, so I can't"
-	line "afford to lose."
 	done
 
 GoldenrodPokecomCenterPerson12Text: ; unreferenced

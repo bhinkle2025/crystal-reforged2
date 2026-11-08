@@ -1574,6 +1574,11 @@ _OakText5::
 	line "#MON every day."
 	prompt
 
+Text_PasswordOption::
+	text "Enter an optional"
+	line "password?"
+	prompt
+
 _CantDepositText::
 	text "Can't deposit"
 	line "this item."

@@ -33,6 +33,7 @@ MeetMomRightScript:
 .OnRight:
 	applymovement PLAYERSHOUSE1F_MOM1, MomWalksToPlayerMovement
 MeetMomScript:
+	scall PasswordCheck
 	opentext
 	writetext ElmsLookingForYouText
 	promptbutton
@@ -109,6 +110,57 @@ PokegearName:
 PlayersHouse1FReceiveItemStd:
 	jumpstd ReceiveItemScript
 	end
+
+
+PasswordCheck:
+	checkevent EVENT_PASSWORD_SET
+	iftrue .stop
+	setevent EVENT_PASSWORD_SET
+	callasm .trade
+	iftrue .EnableTrade
+	callasm .wild
+	iftrue .EnableWild
+.stop
+	end
+
+.EnableTrade:
+	setevent EVENT_PASSWORD_TRADE
+	end
+
+.EnableWild:
+	setevent EVENT_PASSWORD_WILD
+	end
+
+.trade:
+	xor a
+	ld [wScriptVar], a
+	ld de, TradePassword
+	ld hl, wGreensName
+	ld c, 5
+	call CompareBytes
+	ret nz
+	ld a, 1
+	ld [wScriptVar], a
+	ret
+
+.wild:
+	xor a
+	ld [wScriptVar], a
+	ld de, WildPassword
+	ld hl, wGreensName
+	ld c, 4
+	call CompareBytes
+	ret nz
+	ld a, 1
+	ld [wScriptVar], a
+	ret
+
+TradePassword:
+	db "TRADE"
+
+WildPassword:
+	db "WILD"
+
 
 MomScript:
 	faceplayer
