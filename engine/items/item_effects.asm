@@ -1522,6 +1522,16 @@ ReviveEffect:
 	jp StatusHealer_Jumptable
 
 RevivePokemon:
+    ld de, EVENT_NUZLOCKE_MODE
+    ld b, CHECK_FLAG
+    call EventFlagAction
+    ld a, c
+    and a
+    jr z, .NormalRevive
+    ld a, TRUE
+    ret
+
+.NormalRevive:
 	call IsMonFainted
 	ld a, TRUE
 	ret nz

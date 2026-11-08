@@ -279,7 +279,7 @@ TeddiursaPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	getmonname STRING_BUFFER_3, GEODUDE
+	getmonname STRING_BUFFER_3, TEDDIURSA
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -1159,6 +1159,72 @@ FriendshipEndureDisabledText:
 	line "disabled!"
 	done
 
+ElmsLabNuzlockeModeBookshelf:
+	opentext
+	checkevent EVENT_NUZLOCKE_MODE
+	iftrue .Disable
+
+	writetext NuzlockeModeEnableText
+	yesorno
+	iffalse .Cancel
+	setevent EVENT_NUZLOCKE_MODE
+	writetext NuzlockeModeEnabledText
+	sjump .Finish
+
+.Disable:
+	writetext NuzlockeModeDisableText
+	yesorno
+	iffalse .Cancel
+	clearevent EVENT_NUZLOCKE_MODE
+	writetext NuzlockeModeDisabledText
+
+.Finish:
+	waitbutton
+.Cancel:
+	closetext
+	end
+
+NuzlockeModeEnableText:
+	text "It's a book about"
+	line "a harsh #MON"
+	cont "challenge."
+
+	para "NUZLOCKE MODE"
+
+	para "If a #MON"
+	line "faints, it is"
+	cont "lost forever."
+
+	para "Only the first"
+	line "#MON found in"
+	cont "each area may"
+	cont "be caught."
+
+	para "Are you ready"
+	line "for the challenge?"
+	done
+
+NuzlockeModeEnabledText:
+	text "NUZLOCKE MODE"
+	line "enabled!"
+
+	para "Good luck!"
+	done
+
+NuzlockeModeDisableText:
+	text "It's a book about"
+	line "a harsh #MON"
+	cont "challenge."
+
+	para "Disable"
+	line "NUZLOCKE MODE?"
+	done
+
+NuzlockeModeDisabledText:
+	text "NUZLOCKE MODE"
+	line "disabled!"
+	done
+
 ElmText_Intro:
 	text "ELM: <PLAY_G>!"
 	line "There you are!"
@@ -1936,7 +2002,7 @@ ElmsLab_MapEvents:
 	bg_event  3,  7, BGEVENT_READ, ElmsLabTravelTip4
 	bg_event  6,  7, BGEVENT_READ, ElmsLabHardModeBookshelf
 	bg_event  7,  7, BGEVENT_READ, ElmsLabFriendshipEndureBookshelf
-	bg_event  8,  7, BGEVENT_READ, ElmsLabBookshelf
+	bg_event  8,  7, BGEVENT_READ, ElmsLabNuzlockeModeBookshelf
 	bg_event  9,  7, BGEVENT_READ, ElmsLabBookshelf
 	bg_event  9,  3, BGEVENT_READ, ElmsLabTrashcan
 	bg_event  5,  0, BGEVENT_READ, ElmsLabWindow

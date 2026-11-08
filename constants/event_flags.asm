@@ -1469,6 +1469,7 @@
 	const EVENT_PASSWORD_SET
 	const EVENT_PASSWORD_TRADE
 	const EVENT_PASSWORD_WILD
+	const EVENT_NUZLOCKE_MODE
 ; Unused: next 47 events
 
 	const_next 2048

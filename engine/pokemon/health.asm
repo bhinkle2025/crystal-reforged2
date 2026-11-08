@@ -23,6 +23,21 @@ HealParty:
 	ret
 
 HealPartyMon:
+	; Check if Nuzlocke Mode is enabled
+	ld de, EVENT_NUZLOCKE_MODE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .NormalHeal
+
+	; Check whether the Pokemon has fainted
+	ld a, MON_HP
+	call GetPartyParamLocation
+	ld a, [hli]
+	or [hl]
+	ret z ; Fainted Pokemon cannot be healed
+.NormalHeal:
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld d, h

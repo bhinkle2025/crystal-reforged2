@@ -7,6 +7,9 @@ OverworldWhiteoutScript::
 	callasm OverworldBGMap
 
 Script_Whiteout:
+	checkevent EVENT_NUZLOCKE_MODE
+	iftrue .NuzlockeGameOver
+
 	writetext .WhitedOutText
 	waitbutton
 	special FadeOutToWhite
@@ -27,6 +30,24 @@ Script_Whiteout:
 .WhitedOutText:
 	text_far _WhitedOutText
 	text_end
+
+.NuzlockeGameOver:
+	writetext .WhitedOutText
+	waitbutton
+	writetext .NuzlockeGameOverText
+	waitbutton
+	special FadeOutToWhite
+	pause 40
+	callasm Reset
+	endall
+
+.NuzlockeGameOverText:
+	text "Your last #MON"
+	line "has fallen..."
+
+	para "NUZLOCKE MODE"
+	line "GAME OVER!"
+	done
 
 OverworldBGMap:
 	call ClearPalettes
