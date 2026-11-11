@@ -1470,6 +1470,7 @@
 	const EVENT_PASSWORD_TRADE
 	const EVENT_PASSWORD_WILD
 	const EVENT_NUZLOCKE_MODE
+	const EVENT_NUZLOCKE_BALLS_RECEIVED
 ; Unused: next 47 events
 
 	const_next 2048

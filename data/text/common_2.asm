@@ -1583,3 +1583,15 @@ _CantDepositText::
 	text "Can't deposit"
 	line "this item."
 	prompt
+
+_NuzlockeAreaUsedText::
+	text "You can't catch"
+	line "another #MON"
+	cont "in this area!"
+	prompt
+
+_NuzlockeDupesClauseText::
+	text "DUPES CLAUSE!"
+	line "You've already"
+	cont "caught its family!"
+	prompt

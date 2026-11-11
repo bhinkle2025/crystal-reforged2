@@ -1,6 +1,190 @@
 ; Core components of the battle engine.
 
+
+NuzlockeGetArea:
+	; Get the current map's landmark
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+	call GetWorldMapLocation
+
+	; Handle special interior maps
+	cp LANDMARK_SPECIAL
+	jr nz, .CheckLandmark
+
+	ld a, [wBackupMapGroup]
+	ld b, a
+	ld a, [wBackupMapNumber]
+	ld c, a
+	call GetWorldMapLocation
+
+.CheckLandmark:
+	; Reject invalid landmarks
+	cp LANDMARK_SPECIAL
+	jr z, .Invalid
+	cp NUM_LANDMARKS
+	jr nc, .Invalid
+
+	; Return landmark in A, carry set
+	scf
+	ret
+
+.Invalid:
+	; Return carry clear
+	xor a
+	ret
+
+NuzlockeCheckArea:
+	; Return zero if the area is unused
+	call NuzlockeGetArea
+	jr c, .Valid
+
+	xor a
+	ret
+
+.Valid:
+	ld e, a
+	ld d, 0
+	ld hl, wNuzlockeEncounterFlags
+	ld b, CHECK_FLAG
+	call FlagAction
+
+	ld a, c
+	and a
+	ret
+
+NuzlockeMarkArea::
+	; Permanently record the encounter
+	call NuzlockeGetArea
+	ret nc
+
+	ld e, a
+	ld d, 0
+	ld hl, wNuzlockeEncounterFlags
+	ld b, SET_FLAG
+	call FlagAction
+	ret
+
+NuzlockeDebugCheckArea::
+	; Check Route 29 specifically
+	ld hl, wNuzlockeEncounterFlags
+	ld de, LANDMARK_ROUTE_29
+	ld b, CHECK_FLAG
+	call FlagAction
+
+	; Return result to map script
+	ld a, c
+	ld [wScriptVar], a
+	ret
+
+
+NuzlockeRegisterWildEncounter:
+	; Ignore link and trainer battles
+	ld a, [wLinkMode]
+	and a
+	ret nz
+
+	ld a, [wBattleMode]
+	cp 1
+	ret nz
+
+	; Ignore special battle types
+	ld a, [wBattleType]
+	cp BATTLETYPE_TUTORIAL
+	ret z
+	cp BATTLETYPE_DEBUG
+	ret z
+	cp BATTLETYPE_CONTEST
+	ret z
+
+	; Check Nuzlocke Mode
+	ld de, EVENT_NUZLOCKE_MODE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret z
+
+	; Check whether Poke Balls were received
+	ld de, EVENT_NUZLOCKE_BALLS_RECEIVED
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret z
+
+	; Record this area's encounter
+	call NuzlockeMarkArea
+	ret
+
 DoBattle:
+	; Allow captures by default
+	ld a, TRUE
+	ld [wNuzlockeCatchAllowed], a
+
+	; Exclude link battles
+	ld a, [wLinkMode]
+	and a
+	jr nz, .SkipNuzlockeTest
+
+	; Only register wild encounters
+	ld a, [wBattleMode]
+	cp WILD_BATTLE
+	jr nz, .SkipNuzlockeTest
+
+	; Exclude special battles
+	ld a, [wBattleType]
+	cp BATTLETYPE_TUTORIAL
+	jr z, .SkipNuzlockeTest
+	cp BATTLETYPE_DEBUG
+	jr z, .SkipNuzlockeTest
+	cp BATTLETYPE_CONTEST
+	jr z, .SkipNuzlockeTest
+
+	; Check whether Nuzlocke Mode is enabled
+	ld de, EVENT_NUZLOCKE_MODE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .SkipNuzlockeTest
+
+	; Only count encounters after receiving Poke Balls
+	ld de, EVENT_NUZLOCKE_BALLS_RECEIVED
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .SkipNuzlockeTest
+
+	; Dupes Clause: Check evolutionary family
+	farcall NuzlockeCheckDuplicateFamily
+	ld a, c
+	and a
+	jr z, .NotDuplicate
+
+	; Duplicate: Reject without consuming encounter
+	ld a, 2
+	ld [wNuzlockeCatchAllowed], a
+	jr .SkipNuzlockeTest
+
+.NotDuplicate:
+	; Check if this area has already been used
+	call NuzlockeCheckArea
+	and a
+	jr nz, .NuzlockeAreaUsed
+
+	; First encounter: permanently mark area
+	call NuzlockeMarkArea
+	jr .SkipNuzlockeTest
+
+.NuzlockeAreaUsed:
+	; Subsequent encounters cannot be caught
+	xor a
+	ld [wNuzlockeCatchAllowed], a
+
+.SkipNuzlockeTest:
 	xor a
 	ld [wPlayerRoostActive], a
 	ld [wEnemyRoostActive], a

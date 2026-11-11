@@ -722,6 +722,9 @@ SECTION "Overworld Wildmon Data", ROMX
 
 INCLUDE "engine/overworld/wildmons.asm"
 
+SECTION "Nuzlocke Dupes Clause", ROMX, BANK[$7a]
+
+INCLUDE "engine/battle/nuzlocke_dupes.asm"
 
 SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
 

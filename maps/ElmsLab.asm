@@ -6,6 +6,14 @@
 	const ELMSLAB_POKE_BALL3
 	const ELMSLAB_OFFICER
 
+
+ClearNuzlockeEncounterFlags:
+	ld hl, wNuzlockeEncounterFlags
+	ld bc, (NUM_LANDMARKS + 7) / 8
+	xor a
+	call ByteFill
+	ret
+
 ElmsLab_MapScripts:
 	def_scene_scripts
 	scene_script ElmsLabMeetElmScene, SCENE_ELMSLAB_MEET_ELM
@@ -798,6 +806,8 @@ AideScript_GiveYouBalls:
 	getitemname STRING_BUFFER_4, POKE_BALL
 	scall AideScript_ReceiveTheBalls
 	giveitem POKE_BALL, 5
+	callasm ClearNuzlockeEncounterFlags
+	setevent EVENT_NUZLOCKE_BALLS_RECEIVED
 	writetext AideText_ExplainBalls
 	promptbutton
 	itemnotify
@@ -1224,6 +1234,36 @@ NuzlockeModeDisabledText:
 	text "NUZLOCKE MODE"
 	line "disabled!"
 	done
+
+
+ElmsLabNuzlockeTestBookshelf:
+	opentext
+	callasm NuzlockeDebugCheckArea
+	iftrue .AlreadyUsed
+
+	writetext NuzlockeDebugUnusedText
+	waitbutton
+	closetext
+	end
+
+.AlreadyUsed:
+	writetext NuzlockeDebugUsedText
+	waitbutton
+	closetext
+	end
+
+NuzlockeDebugUnusedText:
+	text "AREA UNUSED!"
+	done
+
+NuzlockeDebugMarkedText:
+	text "AREA MARKED!"
+	done
+
+NuzlockeDebugUsedText:
+	text "AREA ALREADY USED!"
+	done
+
 
 ElmText_Intro:
 	text "ELM: <PLAY_G>!"
@@ -2003,7 +2043,7 @@ ElmsLab_MapEvents:
 	bg_event  6,  7, BGEVENT_READ, ElmsLabHardModeBookshelf
 	bg_event  7,  7, BGEVENT_READ, ElmsLabFriendshipEndureBookshelf
 	bg_event  8,  7, BGEVENT_READ, ElmsLabNuzlockeModeBookshelf
-	bg_event  9,  7, BGEVENT_READ, ElmsLabBookshelf
+	bg_event  9,  7, BGEVENT_READ, ElmsLabNuzlockeTestBookshelf
 	bg_event  9,  3, BGEVENT_READ, ElmsLabTrashcan
 	bg_event  5,  0, BGEVENT_READ, ElmsLabWindow
 	bg_event  3,  5, BGEVENT_DOWN, ElmsLabPC

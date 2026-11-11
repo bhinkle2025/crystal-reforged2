@@ -1,0 +1,149 @@
+NuzlockeCheckDuplicateFamily::
+	ld a, [wEnemyMonSpecies]
+	and a
+	jr nz, .has_species
+	ld c, a
+	ret
+
+.has_species:
+	ld d, a
+	ld hl, .Families
+
+.next_family:
+	ld a, [hl]
+	and a
+	jr z, .check_species
+	push hl
+
+.find_member:
+	ld a, [hli]
+	and a
+	jr z, .not_this_family
+	cp d
+	jr nz, .find_member
+
+	; Found the encountered Pokemon's family
+	pop hl
+
+.check_family:
+	ld a, [hli]
+	and a
+	jr z, .not_caught
+	push hl
+	dec a
+	call CheckCaughtMon
+	pop hl
+	jr nz, .caught
+	jr .check_family
+
+.not_this_family:
+	pop bc
+	jr .next_family
+
+.check_species:
+	; Other Pokemon retain same-species Dupes Clause
+	ld a, [wEnemyMonSpecies]
+	dec a
+	jp CheckCaughtMon
+
+.caught:
+	ld c, 1
+	ret
+
+.not_caught:
+	ld c, 0
+	ret
+
+.Families:
+	; Kanto evolutionary families
+	db BULBASAUR, IVYSAUR, VENUSAUR, 0
+	db CHARMANDER, CHARMELEON, CHARIZARD, 0
+	db SQUIRTLE, WARTORTLE, BLASTOISE, 0
+	db CATERPIE, METAPOD, BUTTERFREE, 0
+	db WEEDLE, KAKUNA, BEEDRILL, 0
+	db PIDGEY, PIDGEOTTO, PIDGEOT, 0
+	db RATTATA, RATICATE, 0
+	db SPEAROW, FEAROW, 0
+	db EKANS, ARBOK, 0
+	db PICHU, PIKACHU, RAICHU, 0
+	db SANDSHREW, SANDSLASH, 0
+	db NIDORAN_F, NIDORINA, NIDOQUEEN, 0
+	db NIDORAN_M, NIDORINO, NIDOKING, 0
+	db CLEFFA, CLEFAIRY, CLEFABLE, 0
+	db VULPIX, NINETALES, 0
+	db IGGLYBUFF, JIGGLYPUFF, WIGGLYTUFF, 0
+	db ZUBAT, GOLBAT, CROBAT, 0
+	db ODDISH, GLOOM, VILEPLUME, BELLOSSOM, 0
+	db PARAS, PARASECT, 0
+	db VENONAT, VENOMOTH, 0
+	db DIGLETT, DUGTRIO, 0
+	db MEOWTH, PERSIAN, 0
+	db PSYDUCK, GOLDUCK, 0
+	db MANKEY, PRIMEAPE, 0
+	db GROWLITHE, ARCANINE, 0
+	db POLIWAG, POLIWHIRL, POLIWRATH, POLITOED, 0
+	db ABRA, KADABRA, ALAKAZAM, 0
+	db MACHOP, MACHOKE, MACHAMP, 0
+	db BELLSPROUT, WEEPINBELL, VICTREEBEL, 0
+	db TENTACOOL, TENTACRUEL, 0
+	db GEODUDE, GRAVELER, GOLEM, 0
+	db PONYTA, RAPIDASH, 0
+	db SLOWPOKE, SLOWBRO, SLOWKING, 0
+	db MAGNEMITE, MAGNETON, 0
+	db DODUO, DODRIO, 0
+	db SEEL, DEWGONG, 0
+	db GRIMER, MUK, 0
+	db SHELLDER, CLOYSTER, 0
+	db GASTLY, HAUNTER, GENGAR, 0
+	db ONIX, STEELIX, 0
+	db DROWZEE, HYPNO, 0
+	db KRABBY, KINGLER, 0
+	db VOLTORB, ELECTRODE, 0
+	db EXEGGCUTE, EXEGGUTOR, 0
+	db CUBONE, MAROWAK, 0
+	db TYROGUE, HITMONLEE, HITMONCHAN, HITMONTOP, 0
+	db KOFFING, WEEZING, 0
+	db RHYHORN, RHYDON, 0
+	db CHANSEY, BLISSEY, 0
+	db HORSEA, SEADRA, KINGDRA, 0
+	db GOLDEEN, SEAKING, 0
+	db STARYU, STARMIE, 0
+	db SCYTHER, SCIZOR, 0
+	db SMOOCHUM, JYNX, 0
+	db ELEKID, ELECTABUZZ, 0
+	db MAGBY, MAGMAR, 0
+	db MAGIKARP, GYARADOS, 0
+	db EEVEE, VAPOREON, JOLTEON, FLAREON, ESPEON, UMBREON, 0
+	db PORYGON, PORYGON2, 0
+	db OMANYTE, OMASTAR, 0
+	db KABUTO, KABUTOPS, 0
+	db DRATINI, DRAGONAIR, DRAGONITE, 0
+
+	; Johto evolutionary families
+	db CHIKORITA, BAYLEEF, MEGANIUM, 0
+	db CYNDAQUIL, QUILAVA, TYPHLOSION, 0
+	db TOTODILE, CROCONAW, FERALIGATR, 0
+	db SENTRET, FURRET, 0
+	db HOOTHOOT, NOCTOWL, 0
+	db LEDYBA, LEDIAN, 0
+	db SPINARAK, ARIADOS, 0
+	db CHINCHOU, LANTURN, 0
+	db TOGEPI, TOGETIC, 0
+	db NATU, XATU, 0
+	db MAREEP, FLAAFFY, AMPHAROS, 0
+	db MARILL, AZUMARILL, 0
+	db HOPPIP, SKIPLOOM, JUMPLUFF, 0
+	db SUNKERN, SUNFLORA, 0
+	db WOOPER, QUAGSIRE, 0
+	db PINECO, FORRETRESS, 0
+	db SNUBBULL, GRANBULL, 0
+	db TEDDIURSA, URSARING, 0
+	db SLUGMA, MAGCARGO, 0
+	db SWINUB, PILOSWINE, 0
+	db REMORAID, OCTILLERY, 0
+	db HOUNDOUR, HOUNDOOM, 0
+	db PHANPY, DONPHAN, 0
+	db LARVITAR, PUPITAR, TYRANITAR, 0
+
+	; End of evolutionary family table
+	db 0

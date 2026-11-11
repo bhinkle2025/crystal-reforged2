@@ -1309,8 +1309,8 @@ JohtoGrassWildMons:
 	; morn
 	;   %, species,         min, max
 	db 30, GEODUDE,            2,   6
-	db 30, ZUBAT,              2,   6
-	db 20, TEDDIURSA,          2,   6
+	db 30, GRAVELER,           2,   6
+	db 20, GOLEM,              2,   6
 	db 10, LARVITAR,           2,   6
 	db  5, MACHOP,             2,   6
 	db  4, ONIX,               2,   6
@@ -1318,8 +1318,8 @@ JohtoGrassWildMons:
 	; day
 	;   %, species,         min, max
 	db 30, GEODUDE,            2,   6
-	db 30, ZUBAT,              2,   6
-	db 20, TEDDIURSA,          2,   6
+	db 30, GRAVELER,           2,   6
+	db 20, GOLEM,              2,   6
 	db 10, LARVITAR,           2,   6
 	db  5, MACHOP,             2,   6
 	db  4, ONIX,               2,   6
@@ -1327,8 +1327,8 @@ JohtoGrassWildMons:
 	; nite
 	;   %, species,         min, max
 	db 30, GEODUDE,            2,   6
-	db 30, ZUBAT,              2,   6
-	db 20, TEDDIURSA,          2,   6
+	db 30, GRAVELER,           2,   6
+	db 20, GOLEM,              2,   6
 	db 10, LARVITAR,           2,   6
 	db  5, MACHOP,             2,   6
 	db  4, ONIX,               2,   6

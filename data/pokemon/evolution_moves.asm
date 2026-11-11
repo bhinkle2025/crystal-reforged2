@@ -170,7 +170,7 @@ EvolutionMoves::
 	db SWORDS_DANCE ; ARIADOS
 	db NO_MOVE      ; CROBAT
 	db NO_MOVE      ; CHINCHOU
-	db NO_MOVE      ; LANTURN
+	db THUNDERBOLT  ; LANTURN
 	db NO_MOVE      ; PICHU
 	db NO_MOVE      ; CLEFFA
 	db NO_MOVE      ; IGGLYBUFF
@@ -247,7 +247,7 @@ EvolutionMoves::
 	db NO_MOVE      ; SUICUNE
 	db NO_MOVE      ; LARVITAR
 	db NO_MOVE      ; PUPITAR
-	db NO_MOVE      ; TYRANITAR
+	db GIGA_IMPACT  ; TYRANITAR
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HOOH
 	db NO_MOVE      ; CELEBI

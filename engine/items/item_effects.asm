@@ -209,11 +209,20 @@ ItemEffects:
 ; They all have the ITEMMENU_NOUSE attribute so they can't be used anyway.
 ; NoEffect would be appropriate, with the table then being NUM_ITEMS long.
 
+
 PokeBallEffect:
 	ld a, [wBattleMode]
 	dec a
 	jp nz, UseBallInTrainerBattle
 
+	; Check Nuzlocke capture permission
+	ld a, [wNuzlockeCatchAllowed]
+	cp 2
+	jp z, Ball_NuzlockeDupesClauseMessage
+	and a
+	jp z, Ball_NuzlockeAreaUsedMessage
+
+.NuzlockeAllowed:
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .room_in_party
@@ -2631,6 +2640,22 @@ LooksBitterMessage:
 	ld hl, ItemLooksBitterText
 	jp PrintText
 
+Ball_NuzlockeAreaUsedMessage:
+	ld hl, NuzlockeAreaUsedText
+	call PrintText
+
+	; Item wasn't used
+	ld a, $2
+	ld [wItemEffectSucceeded], a
+	ret
+
+Ball_NuzlockeDupesClauseMessage:
+	ld hl, NuzlockeDupesClauseText
+	call PrintText
+	ld a, $2
+	ld [wItemEffectSucceeded], a
+	ret
+
 Ball_BoxIsFullMessage:
 	ld hl, BallBoxFullText
 	call PrintText
@@ -2708,6 +2733,14 @@ ItemCantGetOnText:
 
 BallBoxFullText:
 	text_far _BallBoxFullText
+	text_end
+
+NuzlockeAreaUsedText:
+	text_far _NuzlockeAreaUsedText
+	text_end
+
+NuzlockeDupesClauseText:
+	text_far _NuzlockeDupesClauseText
 	text_end
 
 ItemUsedText:

@@ -209,28 +209,28 @@ FishGroups:
 
 TimeFishGroups:
 	;  day              nite
-	db CORSOLA,    20,  STARYU,     20 ; 0
-	db CORSOLA,    40,  STARYU,     40 ; 1
-	db SHELLDER,   20,  SHELLDER,   20 ; 2
-	db SHELLDER,   40,  SHELLDER,   40 ; 3
-	db GOLDEEN,    20,  GOLDEEN,    20 ; 4
-	db GOLDEEN,    40,  GOLDEEN,    40 ; 5
-	db POLIWAG,    20,  POLIWAG,    20 ; 6
-	db POLIWAG,    40,  POLIWAG,    40 ; 7
+	db CORSOLA,    10,  STARYU,     10 ; 0
+	db CORSOLA,    10,  STARYU,     10 ; 1
+	db SHELLDER,   10,  SHELLDER,   10 ; 2
+	db SHELLDER,   10,  SHELLDER,   10 ; 3
+	db GOLDEEN,    10,  GOLDEEN,    10 ; 4
+	db GOLDEEN,    15,  GOLDEEN,    15 ; 5
+	db POLIWAG,    10,  POLIWAG,    10 ; 6
+	db POLIWAG,    15,  POLIWAG,    15 ; 7
 	db DRATINI,    20,  DRATINI,    20 ; 8
 	db DRATINI,    40,  DRATINI,    40 ; 9
 	db QWILFISH,   20,  QWILFISH,   20 ; 10
 	db QWILFISH,   40,  QWILFISH,   40 ; 11
-	db REMORAID,   20,  REMORAID,   20 ; 12
-	db REMORAID,   40,  REMORAID,   40 ; 13
+	db REMORAID,   10,  REMORAID,   10 ; 12
+	db REMORAID,   15,  REMORAID,   15 ; 13
 	db GYARADOS,   20,  GYARADOS,   20 ; 14
-	db GYARADOS,   40,  GYARADOS,   40 ; 15
+	db GYARADOS,   25,  GYARADOS,   25 ; 15
 	db DRATINI,    10,  DRATINI,    10 ; 16
-	db DRATINI,    10,  DRATINI,    10 ; 17
-	db HORSEA,     20,  HORSEA,     20 ; 18
-	db HORSEA,     40,  HORSEA,     40 ; 19
-	db TENTACOOL,  20,  TENTACOOL,  20 ; 20
-	db TENTACOOL,  40,  TENTACOOL,  40 ; 21
+	db DRATINI,    15,  DRATINI,    15 ; 17
+	db HORSEA,     10,  HORSEA,     10 ; 18
+	db HORSEA,     15,  HORSEA,     15 ; 19
+	db TENTACOOL,  10,  TENTACOOL,  10 ; 20
+	db TENTACOOL,  15,  TENTACOOL,  15 ; 21
 
 FishGroups_Names::
 	table_width 2, FishGroups_Names

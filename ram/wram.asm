@@ -149,8 +149,8 @@ wScriptVar:: db
 
 wPlayerNextMovement:: db
 wPlayerMovement:: db
-
-	ds 2
+wNuzlockeCatchAllowed:: db
+	ds 1
 
 wMovementObject::
 	db
@@ -3159,7 +3159,13 @@ wKenjiFightCount::   db ; unreferenced
 wParryFightCount::   db
 wErinFightCount::    db
 
-	ds 100
+	
+; Nuzlocke encounter history
+wNuzlockeEncounterFlags::
+	flag_array NUM_LANDMARKS
+
+	; Preserve the existing WRAM/save layout
+	ds 100 - (NUM_LANDMARKS + 7) / 8
 
 wEventFlags:: flag_array NUM_EVENTS
 
