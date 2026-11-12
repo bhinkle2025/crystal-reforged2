@@ -21,7 +21,7 @@ MoveDescriptions::
 	dw WhirlwindDescription
 	dw FlyDescription
 	dw BindDescription
-	dw SlamDescription
+	dw HailDescription
 	dw VineWhipDescription
 	dw StompDescription
 	dw DoubleKickDescription
@@ -347,9 +347,9 @@ BindDescription:
 	db   "Binds the target"
 	next "for 2-5 turns.@"
 
-SlamDescription:
-	db   "Slams the foe with"
-	next "a tail, vine, etc.@"
+HailDescription:
+	db   "Inflicts damage"
+	next "every turn.@"
 
 VineWhipDescription:
 	db   "Whips the foe with"

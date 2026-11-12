@@ -7,6 +7,7 @@ MoveEffectPriorities:
 	db EFFECT_RAIN_DANCE,   3
 	db EFFECT_SANDSTORM,    3
 	db EFFECT_SUNNY_DAY,    3
+	db EFFECT_HAIL,         3
 	db EFFECT_MEAN_LOOK,    2
 	db EFFECT_THIEF,        2
 	db EFFECT_PRIORITY_HIT, 2

@@ -60,7 +60,7 @@ SpearowEggMoves:
 
 EkansEggMoves:
 	db PURSUIT
-	db SLAM
+	db BODY_SLAM
 	db NASTY_PLOT
 	db BEAT_UP
 	db CRUNCH
@@ -246,7 +246,7 @@ SeelEggMoves:
 	db LICK
 	db PERISH_SONG
 	db PECK
-	db SLAM
+	db BODY_SLAM
 	db ENCORE
 	db -1 ; end
 
@@ -284,7 +284,7 @@ KrabbyEggMoves:
 	db HAZE
 	db AMNESIA
 	db FLAIL
-	db SLAM
+	db BODY_SLAM
 	db -1 ; end
 
 ExeggcuteEggMoves:
@@ -395,7 +395,7 @@ EeveeEggMoves:
 OmanyteEggMoves:
 	db BUBBLEBEAM
 	db AURORA_BEAM
-	db SLAM
+	db BODY_SLAM
 	db SUPERSONIC
 	db HAZE
 	db -1 ; end
@@ -563,7 +563,7 @@ AipomEggMoves:
 	db SCREECH
 	db PURSUIT
 	db AGILITY
-	db SLAM
+	db BODY_SLAM
 	db DOUBLESLAP
 	db BEAT_UP
 	db -1 ; end
@@ -703,7 +703,7 @@ MantineEggMoves:
 	db TWISTER
 	db HYDRO_PUMP
 	db HAZE
-	db SLAM
+	db BODY_SLAM
 	db -1 ; end
 
 SkarmoryEggMoves:

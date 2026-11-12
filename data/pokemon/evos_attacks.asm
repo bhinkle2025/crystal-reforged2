@@ -381,7 +381,7 @@ PikachuEvosAttacks:
 	db 8, THUNDER_WAVE
 	db 12, SPARK
 	db 15, DOUBLE_TEAM
-	db 20, SLAM
+	db 20, BODY_SLAM
 	db 24, AGILITY
 	db 26, THUNDERBOLT
 	db 32, LIGHT_SCREEN
@@ -1322,6 +1322,7 @@ SeelEvosAttacks:
 	db 27, SAFEGUARD
 	db 31, ICE_BEAM
 	db 33, BODY_SLAM
+	db 37, HAIL
 	db 0 ; no more level-up moves
 
 DewgongEvosAttacks:
@@ -1337,6 +1338,7 @@ DewgongEvosAttacks:
 	db 27, SAFEGUARD
 	db 31, ICE_BEAM
 	db 33, BODY_SLAM
+	db 37, HAIL
 	db 0 ; no more level-up moves
 
 GrimerEvosAttacks:
@@ -1456,7 +1458,7 @@ OnixEvosAttacks:
 	db 1, ROCK_THROW
 	db 1, SCREECH
 	db 16, CURSE
-	db 20, SLAM
+	db 20, SHARPEN
 	db 24, DIG
 	db 27, RAGE
 	db 30, SKULL_BASH
@@ -2227,6 +2229,7 @@ ArticunoEvosAttacks:
 	db 35, ICE_BEAM
 	db 40, ROOST
 	db 45, SKY_ATTACK
+	db 50, HAIL
 	db 55, WHIRLWIND
 	db 60, BLIZZARD
 	db 0 ; no more level-up moves
@@ -2523,7 +2526,7 @@ SentretEvosAttacks:
 	db 7, QUICK_ATTACK
 	db 13, FURY_SWIPES
 	db 19, THIEF
-	db 25, SLAM
+	db 25, BODY_SLAM
 	db 28, REST
 	db 32, BELLY_DRUM
 	db 36, AMNESIA
@@ -2540,7 +2543,7 @@ FurretEvosAttacks:
 	db 13, FURY_SWIPES
 	db 14, AGILITY
 	db 19, THIEF
-	db 25, SLAM
+	db 25, BODY_SLAM
 	db 28, REST
 	db 32, BELLY_DRUM
 	db 36, AMNESIA

@@ -87,7 +87,7 @@ MoveEffectsPointers:
 	dw Metronome
 	dw LeechSeed
 	dw Splash
-	dw Disable
+	dw Hail
 	dw StaticDamage
 	dw Psywave
 	dw Counter
@@ -158,4 +158,5 @@ MoveEffectsPointers:
 	dw BeatUp
 	dw Fly
 	dw DefenseCurl
+	dw FreezeHit
 	assert_table_length NUM_MOVE_EFFECTS

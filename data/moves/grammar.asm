@@ -61,7 +61,7 @@ MoveGrammar:
 	db WING_ATTACK
 	db FLY
 	db BIND
-	db SLAM
+	db HAIL
 	db HORN_ATTACK
 	db WRAP
 	db THRASH

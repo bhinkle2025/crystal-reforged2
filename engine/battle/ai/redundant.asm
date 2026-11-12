@@ -24,7 +24,7 @@ AI_Redundant:
 	dbw EFFECT_REFLECT,      .Reflect
 	dbw EFFECT_SUBSTITUTE,   .Substitute
 	dbw EFFECT_LEECH_SEED,   .LeechSeed
-	dbw EFFECT_DISABLE,      .Disable
+	dbw EFFECT_HAIL,         .Hail
 	dbw EFFECT_ENCORE,       .Encore
 	dbw EFFECT_SNORE,        .Snore
 	dbw EFFECT_SLEEP_TALK,   .SleepTalk
@@ -95,10 +95,11 @@ AI_Redundant:
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret
 
-.Disable:
-	ld a, [wPlayerDisableCount]
-	and a
-	ret
+.Hail:
+	ld a, [wBattleWeather]
+	cp WEATHER_HAIL
+	jp z, .Redundant
+	jp .NotRedundant
 
 .Encore:
 	ld a, [wPlayerSubStatus5]

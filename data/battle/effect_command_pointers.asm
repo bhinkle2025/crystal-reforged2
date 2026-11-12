@@ -59,7 +59,7 @@ BattleCommandPointers:
 	dw BattleCommand_Metronome
 	dw BattleCommand_LeechSeed
 	dw BattleCommand_Splash
-	dw BattleCommand_Disable
+	dw BattleCommand_StartHail
 	dw BattleCommand_ClearText
 	dw BattleCommand_Charge
 	dw BattleCommand_CheckCharge

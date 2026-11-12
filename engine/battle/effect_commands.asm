@@ -1565,6 +1565,9 @@ BattleCommand_CheckHit:
 	call .ThunderRain
 	ret z
 
+	call .BlizzardHail
+	ret z
+
 	call .XAccuracy
 	ret nz
 
@@ -1719,6 +1722,17 @@ BattleCommand_CheckHit:
 
 	ld a, [wBattleWeather]
 	cp WEATHER_RAIN
+	ret
+
+.BlizzardHail:
+; Return z if the current move always hits in hail, and it is hailing.
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_BLIZZARD
+	ret nz
+
+	ld a, [wBattleWeather]
+	cp WEATHER_HAIL
 	ret
 
 .XAccuracy:
@@ -2627,36 +2641,37 @@ PlayerAttackDamage:
 	jr nc, .special
 
 ; physical
-	ld hl, wEnemyMonDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
+    ld hl, wEnemyMonDefense
+    ld a, [hli]
+    ld b, a
+    ld c, [hl]
 
-	ld a, [wEnemyScreens]
+    ld a, [wEnemyScreens]
 	bit SCREENS_REFLECT, a
 	jr z, .physicalcrit
 	sla c
 	rl b
 
 .physicalcrit
-	ld hl, wBattleMonAttack
-	call CheckDamageStatsCritical
-	jr c, .thickclub
+    ld hl, wBattleMonAttack
+    call CheckDamageStatsCritical
+    jr c, .hailboost
 
-	ld hl, wEnemyDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wPlayerAttack
-	jr .thickclub
+    ld hl, wEnemyDefense
+    ld a, [hli]
+    ld b, a
+    ld c, [hl]
+    ld hl, wPlayerAttack
+
+.hailboost
+    call HailDefenseBoost
+    jr .thickclub
 
 .special
 	ld hl, wEnemyMonSpclDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-
-	call SandstormSpDefBoost
 
 	ld a, [wEnemyScreens]
 	bit SCREENS_LIGHT_SCREEN, a
@@ -2665,19 +2680,21 @@ PlayerAttackDamage:
 	rl b
 
 .specialcrit
-	ld hl, wBattleMonSpclAtk
-	call CheckDamageStatsCritical
-	jr c, .lightball
+    ld hl, wBattleMonSpclAtk
+    call CheckDamageStatsCritical
+    jr c, .sandstormboost
 
-	ld hl, wEnemySpDef
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wPlayerSpAtk
+    ld hl, wEnemySpDef
+    ld a, [hli]
+    ld b, a
+    ld c, [hl]
+    ld hl, wPlayerSpAtk
+
+.sandstormboost
+    call SandstormSpDefBoost
 
 .lightball
-; Note: Returns player special attack at hl in hl.
-	call LightBallBoost
+    call LightBallBoost
 	jr .done
 
 .thickclub
@@ -2895,24 +2912,25 @@ EnemyAttackDamage:
 	rl b
 
 .physicalcrit
-	ld hl, wEnemyMonAttack
-	call CheckDamageStatsCritical
-	jr c, .thickclub
+    ld hl, wEnemyMonAttack
+    call CheckDamageStatsCritical
+    jr c, .hailboost
 
-	ld hl, wPlayerDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wEnemyAttack
-	jr .thickclub
+    ld hl, wPlayerDefense
+    ld a, [hli]
+    ld b, a
+    ld c, [hl]
+    ld hl, wEnemyAttack
+
+.hailboost
+    call HailDefenseBoost
+    jr .thickclub
 
 .special
 	ld hl, wBattleMonSpclDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-
-	call SandstormSpDefBoost
 
 	ld a, [wPlayerScreens]
 	bit SCREENS_LIGHT_SCREEN, a
@@ -2921,17 +2939,21 @@ EnemyAttackDamage:
 	rl b
 
 .specialcrit
-	ld hl, wEnemyMonSpclAtk
-	call CheckDamageStatsCritical
-	jr c, .lightball
-	ld hl, wPlayerSpDef
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wEnemySpAtk
+    ld hl, wEnemyMonSpclAtk
+    call CheckDamageStatsCritical
+    jr c, .sandstormboost
+
+    ld hl, wPlayerSpDef
+    ld a, [hli]
+    ld b, a
+    ld c, [hl]
+    ld hl, wEnemySpAtk
+
+.sandstormboost
+    call SandstormSpDefBoost
 
 .lightball
-	call LightBallBoost
+    call LightBallBoost
 	jr .done
 
 .thickclub
@@ -5974,8 +5996,6 @@ INCLUDE "engine/battle/move_effects/leech_seed.asm"
 
 INCLUDE "engine/battle/move_effects/splash.asm"
 
-INCLUDE "engine/battle/move_effects/disable.asm"
-
 INCLUDE "engine/battle/move_effects/pay_day.asm"
 
 INCLUDE "engine/battle/move_effects/conversion.asm"
@@ -6621,6 +6641,8 @@ INCLUDE "engine/battle/move_effects/future_sight.asm"
 
 INCLUDE "engine/battle/move_effects/thunder.asm"
 
+INCLUDE "engine/battle/move_effects/hail.asm"
+
 CheckHiddenOpponent:
 	ld a, BATTLE_VARS_SUBSTATUS5_OPP
 	call GetBattleVar
@@ -6919,3 +6941,35 @@ SandstormSpDefBoost:
 	ld b, h
 	ld c, l
 	ret
+
+HailDefenseBoost:
+; Check if Hail is active.
+    ld a, [wBattleWeather]
+    cp WEATHER_HAIL
+    ret nz
+
+; Check the defending Pokemon's types.
+    ld hl, wEnemyMonType1
+    ldh a, [hBattleTurn]
+    and a
+    jr z, .check_type
+    ld hl, wBattleMonType1
+
+.check_type
+    ld a, [hli]
+    cp ICE
+    jr z, .boost
+    ld a, [hl]
+    cp ICE
+    ret nz
+
+.boost
+; Multiply Defense in bc by 1.5.
+    ld h, b
+    ld l, c
+    srl b
+    rr c
+    add hl, bc
+    ld b, h
+    ld c, l
+    ret

@@ -1202,14 +1202,6 @@ Splash:
 	splash
 	endmove
 
-Disable:
-	checkobedience
-	usedmovetext
-	doturn
-	checkhit
-	disable
-	endmove
-
 RazorWind:
 	checkcharge
 	checkobedience
@@ -2145,6 +2137,13 @@ DefenseCurl:
 	raisesub
 	statupmessage
 	statupfailtext
+	endmove
+
+Hail:
+	checkobedience
+	usedmovetext
+	doturn
+	starthail
 	endmove
 
 SpeedUpHit:
